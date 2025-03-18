@@ -1,0 +1,83 @@
+.todayForecast {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 30em;
+    background: skyblue;
+}
+
+#todayForecastHeader {
+    margin-top: 0em;
+    margin-bottom: 0em;
+    padding-bottom:0em;
+}
+
+#todayShortCast {
+    padding-top:0em;
+}
+
+.todayForecastChild {
+    width: 300px; /* Fixed width to align all child divs */
+    justify-content: center; /* Centers text inside each child div */
+    align-items: center;     /* Centers text vertically */
+    text-align: center;      /* Ensures text is centered */
+    padding: 10px;           /* Adds spacing for readability */
+    background: rgb(202, 230, 240);
+
+}
+
+#todayTemperatures {
+    display: flex;
+    flex-direction: row;
+}
+
+.todayTemperature {
+    padding-left:0.5em;
+    padding-right:0.5em;
+    margin-top: 0em;
+    margin-bottom:0em;
+}
+
+#lowTemp {
+    font-size: 25px;
+    color:blue
+}
+
+#nowTemp {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#highTemp {
+    font-size: 25px;
+    color: red
+}
+
+#todayPrecip {
+    padding-top: 0px;
+}
+
+#todayWind {
+    padding-top: 0px;
+}
+
+.latestObservationsLabel {
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+.stationInformation {
+    margin-top: 0em;
+}
+
+.observationsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 5px;
+    font-size: 14px;
+}
+
+.metarString {
+    font-size: 10px
+}
