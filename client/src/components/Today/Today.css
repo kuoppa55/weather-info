@@ -1,24 +1,31 @@
-.todayForecast {
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+.todayContainer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     display: flex;
     width: 30em;
     background: skyblue;
+    border-radius: 2.5%;
+    font-family: 'Playfair Display', serif;
 }
 
-#todayForecastHeader {
+#todayHeader {
     margin-top: 0em;
     margin-bottom: 0em;
     padding-bottom:0em;
+    font-weight: normal;
+    font-size: 48px;
 }
 
 #todayShortCast {
     padding-top:0em;
+    font-size: 24px;
 }
 
-.todayForecastChild {
-    width: 300px; /* Fixed width to align all child divs */
+.todayChild {
+    width: 400px; /* Fixed width to align all child divs */
     justify-content: center; /* Centers text inside each child div */
     align-items: center;     /* Centers text vertically */
     text-align: center;      /* Ensures text is centered */
@@ -27,57 +34,26 @@
 
 }
 
-#todayTemperatures {
-    display: flex;
-    flex-direction: row;
-}
-
-.todayTemperature {
-    padding-left:0.5em;
-    padding-right:0.5em;
-    margin-top: 0em;
-    margin-bottom:0em;
-}
-
-#lowTemp {
-    font-size: 25px;
-    color:blue
-}
-
-#nowTemp {
-    font-size: 40px;
-    font-weight: bold;
-}
-
-#highTemp {
-    font-size: 25px;
-    color: red
-}
-
-#todayPrecip {
-    padding-top: 0px;
-}
-
-#todayWind {
-    padding-top: 0px;
-}
-
 .latestObservationsLabel {
     margin-top: 0em;
     margin-bottom: 0em;
+    font-weight: normal;
+    font-size: 40px;
 }
 
 .stationInformation {
     margin-top: 0em;
+    font-weight: normal;
+    font-size: 24px;
 }
 
 .observationsGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 5px;
-    font-size: 14px;
+    font-size: 20px;
 }
 
 .metarString {
-    font-size: 10px
+    font-size: 12px
 }
+

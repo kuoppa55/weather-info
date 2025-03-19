@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import axios from 'axios'
-import Today from './Today';
-import ZipCode from './ZipCode';
-import { WeatherData } from './types';
-import { defaultWeatherData } from './defaultStates';
-import processWeatherToday from './processWeatherToday';
+import Today from './components/Today/Today';
+import ZipCode from './components/ZipCode/ZipCode';
+import { WeatherData } from './types/types';
+import { defaultWeatherData } from './types/defaultStates';
+import processWeatherToday from './utils/processWeatherToday';
 
 function App() {
   const [weatherData, setWeatherData] = useState<WeatherData>(defaultWeatherData)

@@ -1,0 +1,56 @@
+
+.temperaturesContainer {
+    display: flex;
+    justify-content: center; /* Center everything vertically */
+    align-items: center;     /* Center horizontally */
+    background-color:azure;
+    border-radius: 2em;
+}
+
+.todayTemperature {
+    padding-left:0.5em;
+    padding-right:0.5em;
+    margin-top: 0em;
+    margin-bottom:0em;
+}
+
+.rainAndWindContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color:azure;
+    border-radius: 2em;
+    margin-top: 2em;
+}
+
+#lowTemp {
+    font-size: 48px;
+    color:blue;
+    padding-top: 1.5em;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+}
+
+#nowTemp {
+    font-size: 64px;
+    font-weight: normal;
+    padding-left: 0em;
+    padding-right: 0em;
+}
+
+#highTemp {
+    font-size: 48px;
+    color: red;
+    padding-bottom: 1.5em;
+    padding-right: 0.2em;
+    padding-left: 0.2em;
+}
+
+.todayPrecip {
+    padding-top: 0px;
+    font-size: 32px;
+}
+
+.windForecast {
+    padding-top: 0px;
+    font-size: 32px;
+}

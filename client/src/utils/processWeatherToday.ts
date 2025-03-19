@@ -1,4 +1,4 @@
-import { WeatherData, WeatherToday } from './types';
+import { WeatherData, WeatherToday } from '../types/types';
 const processWeatherToday = (weatherData: WeatherData): WeatherToday => {
     const firstWeatherPeriod = weatherData.dailyForecast.dailyPeriods[0]
     const secondWeatherPeriod = weatherData.dailyForecast.dailyPeriods[1]
