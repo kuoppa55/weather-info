@@ -1,4 +1,4 @@
-import { DailyForecast, HourlyForecast, LatestObservation, Observation,  WeatherData, Wind } from "./types";
+import { DailyForecast, IHourlyForecast, LatestObservation, Observation,  WeatherData, Wind } from "./types";
 
 
 
@@ -26,13 +26,13 @@ const defaultLatestObservation: LatestObservation = {
     observation: defaultObservation,
 }
 
-const defaultHourlyForecast: HourlyForecast = {
+const defaultHourlyForecast: IHourlyForecast = {
     hourlyPeriods: [],
     timeInfo: {
         generatedAt: "",
         validUntil: "",
         lastUpdated: "",
-    }
+    },
 }
 
 const defaultDailyForecast: DailyForecast = {

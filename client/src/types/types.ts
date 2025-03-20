@@ -2,7 +2,7 @@ export type WeatherData = {
     latitude: string,
     longitude: string,
     dailyForecast: DailyForecast,
-    hourlyForecast: HourlyForecast,
+    hourlyForecast: IHourlyForecast,
     latestObservation: LatestObservation,
 }
 
@@ -24,13 +24,13 @@ export type DailyPeriod = {
     precipProb: number,
 }
 
-export type HourlyForecast = {
+export type IHourlyForecast = {
     timeInfo: {
         generatedAt: string,
         lastUpdated: string,
         validUntil: string,
     },
-    hourlyPeriods: HourlyPeriod[]
+    hourlyPeriods: HourlyPeriod[],
 }
 
 export type HourlyPeriod = {
@@ -40,6 +40,8 @@ export type HourlyPeriod = {
     dewPoint: number,
     relativeHumidity: number,
     wind: Wind,
+    startTime: string,
+    endTime: string,
 }
 
 export type LatestObservation = {
@@ -76,7 +78,8 @@ export type IWeatherToday = {
     timeOfDay: string,
     shortCast: string,
     todayForecast: ITodayForecast,
-    todayObserved: ITodayObserved,   
+    todayObserved: ITodayObserved,
+    todayHourly: IHourlyForecast,   
 }
 
 export type ITodayForecast = {

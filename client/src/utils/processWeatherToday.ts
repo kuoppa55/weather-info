@@ -27,7 +27,8 @@ const processWeatherToday = (weatherData: WeatherData): IWeatherToday => {
             stationId: weatherData.latestObservation.stationId,
             stationName: weatherData.latestObservation.name,
             metar: currentObservation.metar,
-        }
+        },
+        todayHourly: weatherData.hourlyForecast,
     }
 }
 

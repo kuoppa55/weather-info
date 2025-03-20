@@ -1,0 +1,12 @@
+.hourlyForecast {
+    background-color:azure;
+    border-radius: 1em;
+}
+
+
+.hourlyForecastLabel {
+    margin-top: 0em;
+    margin-bottom: 0em;
+    font-weight: normal;
+    font-size: 40px;
+}

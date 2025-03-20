@@ -3,9 +3,10 @@ import './Today.css'
 import { IWeatherToday } from '../../types/types'
 import TodayForecast from '../TodayForecast/TodayForecast'
 import TodayObserved from '../TodayObserved/TodayObserved'
+import HourlyForecast from '../HourlyForecast/HourlyForecast'
 
 const Today = (props: IWeatherToday) => {
-    const {timeOfDay, shortCast, todayForecast, todayObserved} = props
+    const {timeOfDay, shortCast, todayForecast, todayObserved, todayHourly} = props
 
     return (
         <div className="todayContainer">
@@ -16,6 +17,9 @@ const Today = (props: IWeatherToday) => {
             </div>
             <div className="todayChild" id="todayObservedContainer">
                 <TodayObserved {...todayObserved}/>
+            </div>
+            <div className="todayChild" id="hourlyForecastContainer">
+                <HourlyForecast {...todayHourly}/>
             </div>
         </div>
     )
