@@ -2,6 +2,7 @@ import React from 'react'
 import './Today.css'
 import { WeatherToday } from '../../types/types'
 import TodayForecast from '../TodayForecast/TodayForecast'
+import TodayObserved from '../TodayObserved/TodayObserved'
 
 const Today = (props: WeatherToday) => {
     const {timeOfDay, shortCast, 
@@ -18,18 +19,8 @@ const Today = (props: WeatherToday) => {
                 lowTemp={forecastLowTemp.value} highTemp={forecastHighTemp.value} nowTemp={observedTemp}/>
             </div>
             <div className="todayChild" id="todayObservedContainer">
-                <h2 className="latestObservationsLabel">Latest Observation</h2>
-                <h4 className="stationInformation">{stationId} {stationName}</h4>
-                <div className="observationsGrid">
-                    <div className="nowWind">
-                        Wind: {observedWind.windSpeed.toFixed(1)} mph from {observedWind.windDirection}
-                    </div>
-                    {observedHumidity &&  <div className="nowHumidity">Humidity: {observedHumidity.toFixed(1)}%</div>}
-                    {observedGust && <div className="nowGust">Gust: {observedGust.toFixed(1)} mph</div>}
-                    {observedVisbility && <div className="nowVis">Visibility: {observedVisbility} miles</div>}
-                    {observedPressure && <div className="nowPressure">Pressure: {Math.round(observedPressure)} MB</div>}
-                </div>
-                <p className="metarString">{metarString}</p>
+                <TodayObserved wind={observedWind} humidity={observedHumidity} visibility={observedVisbility} pressure={observedPressure}
+                gust={observedGust} stationId={stationId} stationName={stationName} metar={metarString} />
             </div>
         </div>
     )

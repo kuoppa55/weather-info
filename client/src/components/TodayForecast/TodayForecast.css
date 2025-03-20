@@ -17,9 +17,6 @@
 .rainAndWindContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    background-color:azure;
-    border-radius: 2em;
-    margin-top: 2em;
 }
 
 #lowTemp {
@@ -48,9 +45,17 @@
 .todayPrecip {
     padding-top: 0px;
     font-size: 32px;
+    background-color:azure;
+    border-radius: 1em;
+    width: 5em;
+    justify-self: center;
 }
 
 .windForecast {
     padding-top: 0px;
     font-size: 32px;
+    background-color:azure;
+    border-radius: 1em;
+    width: 5em;
+    justify-self: center;
 }
