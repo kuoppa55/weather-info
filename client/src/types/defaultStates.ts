@@ -1,10 +1,7 @@
-import { DailyForecast, HourlyForecast, LatestObservation, Observation, Temperature, WeatherData, Wind } from "./types";
+import { DailyForecast, HourlyForecast, LatestObservation, Observation,  WeatherData, Wind } from "./types";
 
 
-const defaultTemperature: Temperature = {
-    value: 0,
-    unit: "",
-}
+
 const defaultWind: Wind  = {
     windSpeed: 0,
     windDirection: ","
@@ -30,12 +27,12 @@ const defaultLatestObservation: LatestObservation = {
 }
 
 const defaultHourlyForecast: HourlyForecast = {
-    shortCast: "",
-    temperature: defaultTemperature,
-    precipProb: 0,
-    dewPoint: 0,
-    relativeHumidity: 0,
-    wind: defaultWind,
+    hourlyPeriods: [],
+    timeInfo: {
+        generatedAt: "",
+        validUntil: "",
+        lastUpdated: "",
+    }
 }
 
 const defaultDailyForecast: DailyForecast = {

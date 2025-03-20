@@ -25,6 +25,15 @@ export type DailyPeriod = {
 }
 
 export type HourlyForecast = {
+    timeInfo: {
+        generatedAt: string,
+        lastUpdated: string,
+        validUntil: string,
+    },
+    hourlyPeriods: HourlyPeriod[]
+}
+
+export type HourlyPeriod = {
     shortCast: string,
     temperature: Temperature,
     precipProb: number,
@@ -63,20 +72,28 @@ export type Wind = {
     windDirection: string,
 }
 
-export type WeatherToday = {
+export type IWeatherToday = {
     timeOfDay: string,
     shortCast: string,
-    forecastLowTemp: Temperature,
-    forecastHighTemp: Temperature,
-    forecastPrecipProb: number,
-    forecastWind: Wind,
-    observedTemp: number,
-    observedWind: Wind,
-    observedHumidity: number,
-    observedVisbility: number,
-    observedPressure: number,
-    observedGust: number,
+    todayForecast: ITodayForecast,
+    todayObserved: ITodayObserved,   
+}
+
+export type ITodayForecast = {
+    precipProb: number,
+    wind: Wind,
+    lowTemp: Temperature,
+    highTemp: Temperature,
+    nowTemp: number,
+}
+
+export type ITodayObserved = {
+    wind: Wind,
+    humidity: number,
+    visibility: number,
+    pressure: number,
+    gust: number,
     stationId: string,
     stationName: string,
-    metarString: string,
+    metar: string,
 }

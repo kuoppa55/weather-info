@@ -1,18 +1,8 @@
 import React from 'react'
-import { Wind } from '../../types/types'
+import { ITodayObserved } from '../../types/types'
 import './TodayObserved.css'
 
-interface TodayObservedProps {
-    stationId: string,
-    stationName: string,
-    wind: Wind,
-    humidity: number,
-    gust: number,
-    visibility: number,
-    pressure: number,
-    metar: string,
-}
-const TodayObserved = (props: TodayObservedProps) => {
+const TodayObserved = (props: ITodayObserved) => {
     const {stationId, stationName, wind, humidity, gust, visibility, pressure, metar} = props
     return (
         <div className="todayObserved">

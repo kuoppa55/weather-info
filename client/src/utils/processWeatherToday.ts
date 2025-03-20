@@ -1,5 +1,5 @@
-import { WeatherData, WeatherToday } from '../types/types';
-const processWeatherToday = (weatherData: WeatherData): WeatherToday => {
+import { WeatherData, IWeatherToday } from '../types/types';
+const processWeatherToday = (weatherData: WeatherData): IWeatherToday => {
     const firstWeatherPeriod = weatherData.dailyForecast.dailyPeriods[0]
     const secondWeatherPeriod = weatherData.dailyForecast.dailyPeriods[1]
     const currentObservation = weatherData.latestObservation.observation
@@ -11,19 +11,23 @@ const processWeatherToday = (weatherData: WeatherData): WeatherToday => {
     return {
         timeOfDay: firstWeatherPeriod.name,
         shortCast: firstWeatherPeriod.shortCast,
-        forecastLowTemp: lowTemp,
-        forecastHighTemp: highTemp,
-        forecastPrecipProb: firstWeatherPeriod.precipProb,
-        forecastWind: firstWeatherPeriod.wind,
-        observedTemp: currentObservation.temperature,
-        observedWind: currentObservation.wind,
-        observedHumidity: currentObservation.relativeHumidity,
-        observedVisbility: currentObservation.visibility,
-        observedPressure: currentObservation.barometricPressure,
-        observedGust: currentObservation.windGust,
-        stationId: weatherData.latestObservation.stationId,
-        stationName: weatherData.latestObservation.name,
-        metarString: currentObservation.metar,
+        todayForecast: {
+            lowTemp: lowTemp,
+            highTemp: highTemp,
+            precipProb: firstWeatherPeriod.precipProb,
+            wind: firstWeatherPeriod.wind,
+            nowTemp: currentObservation.temperature,
+        },
+        todayObserved: {
+            wind: currentObservation.wind,
+            humidity: currentObservation.relativeHumidity,
+            visibility: currentObservation.visibility,
+            pressure: currentObservation.barometricPressure,
+            gust: currentObservation.windGust,
+            stationId: weatherData.latestObservation.stationId,
+            stationName: weatherData.latestObservation.name,
+            metar: currentObservation.metar,
+        }
     }
 }
 
