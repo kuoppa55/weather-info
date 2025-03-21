@@ -1,9 +1,9 @@
 import {DateTime} from 'luxon'
 
 const processHourTime = (hourISO: string): string => {
-
-    const dt = DateTime.fromISO(hourISO)
-    console.log(dt.toFormat("h a"))
+    console.log(hourISO)
+    const dt = DateTime.fromISO(hourISO, {setZone: true})
+    console.log(dt)
     return dt.toFormat("h a")
 }
 
