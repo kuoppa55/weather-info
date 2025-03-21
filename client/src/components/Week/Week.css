@@ -1,0 +1,7 @@
+.week {
+    width: 70%;
+    background-color: lightgray;
+    height: 15em;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}

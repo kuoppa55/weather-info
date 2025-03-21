@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import axios from 'axios'
-import Today from './components/Today/Today';
 import ZipCode from './components/ZipCode/ZipCode';
 import { WeatherData } from './types/types';
 import { defaultWeatherData } from './types/defaultStates';
-import processWeatherToday from './utils/processWeatherToday';
+import Weather from './components/Weather/Weather';
 
 function App() {
   const [weatherData, setWeatherData] = useState<WeatherData>(defaultWeatherData)
@@ -32,7 +31,9 @@ function App() {
         <ZipCode zipCode={zipCode} setZipCode={setZipCode} fetchWeather={fetchWeather}/>
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
-        {weatherData.dailyForecast.dailyPeriods[0] && <Today {...processWeatherToday(weatherData)}></Today>}
+        <div className="weatherContainer">
+          {(weatherData.dailyForecast.dailyPeriods[0] && !loading) && <Weather {...weatherData} />}
+        </div>
       </header>
     </div>
   );

@@ -100,3 +100,11 @@ export type ITodayObserved = {
     stationName: string,
     metar: string,
 }
+
+export type IWeatherDay = {
+    date: string,
+    shortCast: string,
+    highTemp: number,
+    lowTemp: number,
+    precipProb: number,
+}
