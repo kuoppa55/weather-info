@@ -6,6 +6,12 @@
     padding-bottom: 0.5em;
 }
 
+.hourTime {
+    font-size: 32px;
+    text-align: left;
+    margin-left: 0.5em;
+}
+
 .hourForecastDetails {
     display: grid;
     grid-template-columns: repeat(5, 1fr);

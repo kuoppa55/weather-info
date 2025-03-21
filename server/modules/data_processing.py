@@ -33,8 +33,8 @@ def parse_daily_period(period):
 
 def parse_hourly_period(period):
     parsed_hourly_period = {
-        "startTime": utils.ISO_to_EST(period['startTime']),
-        "endTime": utils.ISO_to_EST(period['endTime']),
+        "startTime": (period['startTime']),
+        "endTime": (period['endTime']),
         "shortCast": period['shortForecast'],
 
     }

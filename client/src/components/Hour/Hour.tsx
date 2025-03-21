@@ -1,13 +1,14 @@
 import React from 'react'
 import './Hour.css'
 import { HourlyPeriod } from '../../types/types'
+import processHourTime from '../../utils/processHourTime'
 
 const Hour = (props: HourlyPeriod) => {
     const {shortCast, temperature, precipProb, relativeHumidity, wind, startTime} = props
     return (
         <div className="hour">
             <div className="hourTime">
-                {startTime}
+                {processHourTime(startTime)}
             </div>
             <div className="hourForecastDetails">
                 <div className="hourForecastItem">
