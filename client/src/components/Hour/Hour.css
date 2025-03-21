@@ -1,0 +1,12 @@
+.hour {
+    background-color:azure;
+    border-radius: 1em;
+    margin-bottom: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.hourForecastDetails {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
