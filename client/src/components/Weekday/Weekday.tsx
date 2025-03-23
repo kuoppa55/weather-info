@@ -1,5 +1,6 @@
 import React from 'react'
 import { IWeatherDay } from '../../types/types'
+import './Weekday.css'
 
 const Weekday = (props: IWeatherDay) => {
     const {date, shortCast, highTemp, lowTemp, precipProb} = props
@@ -11,14 +12,14 @@ const Weekday = (props: IWeatherDay) => {
             <div className="weekdayCast">
                 {shortCast}
             </div>
-            <div className="weekdayLowTemp">
-                {lowTemp}
-            </div>
             <div className="weekdayHighTemp">
                 {highTemp}
             </div>
+            <div className="weekdayLowTemp">
+                {lowTemp}
+            </div>
             <div className="weekdayPrecipProb">
-                {precipProb}
+                {precipProb}% rain
             </div>
         </div>
     )
