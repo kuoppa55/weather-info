@@ -148,8 +148,12 @@ def getDailyForecast(point):
         "dailyPeriods": [],
     }
 
+
     for period in rawPeriods:
-        dailyForecast['dailyPeriods'].append(parse_daily_period(period))
+        endTime_dt = datetime.fromisoformat(period['endTime'])
+        now_dt = datetime.now(timezone.utc)
+        if now_dt < endTime_dt:
+            dailyForecast['dailyPeriods'].append(parse_daily_period(period))
     
     return dailyForecast
 

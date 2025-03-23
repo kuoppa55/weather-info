@@ -32,7 +32,7 @@ function App() {
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
         <div className="weatherContainer">
-          {(weatherData.dailyForecast.dailyPeriods[0] && !loading) && <Weather {...weatherData} />}
+          {(weatherData.dailyForecast.dailyPeriods[0] && !loading && !error) && <Weather {...weatherData} />}
         </div>
       </header>
     </div>
