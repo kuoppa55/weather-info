@@ -5,11 +5,13 @@ import Today from '../Today/Today'
 import './Weather.css'
 import Week from '../Week/Week'
 import processWeatherWeek from '../../utils/processWeatherWeek'
+import getTimeOfDay from '../../utils/getTimeOfDay'
 const Weather = (weatherData: WeatherData) => {
+  const timeOfDay = getTimeOfDay()
   return (
     <div className="weather">
-        <Today {...processWeatherToday(weatherData)}></Today>
-        <Week weatherDays={processWeatherWeek(weatherData)}/>
+        <Today {...processWeatherToday(weatherData, timeOfDay)}></Today>
+        <Week weatherDays={processWeatherWeek(weatherData, timeOfDay)}/>
     </div>
   )
 }

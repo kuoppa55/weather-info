@@ -86,7 +86,7 @@ export type ITodayForecast = {
     precipProb: number,
     wind: Wind,
     lowTemp: Temperature,
-    highTemp: Temperature,
+    highTemp: Temperature | null,
     nowTemp: number,
 }
 
@@ -107,4 +107,10 @@ export type IWeatherDay = {
     highTemp: number,
     lowTemp: number,
     precipProb: number,
+}
+
+export enum TimeOfDay {
+    EarlyMorning,
+    Day,
+    Night,
 }

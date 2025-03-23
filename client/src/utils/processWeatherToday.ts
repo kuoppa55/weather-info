@@ -1,21 +1,36 @@
-import { WeatherData, IWeatherToday } from '../types/types';
-const processWeatherToday = (weatherData: WeatherData): IWeatherToday => {
-    const firstWeatherPeriod = weatherData.dailyForecast.dailyPeriods[0]
-    const secondWeatherPeriod = weatherData.dailyForecast.dailyPeriods[1]
+import { WeatherData, IWeatherToday, TimeOfDay, Temperature, DailyPeriod } from '../types/types';
+const processWeatherToday = (weatherData: WeatherData, timeOfDay: TimeOfDay): IWeatherToday => {
+
+    const currentPeriod = weatherData.dailyForecast.dailyPeriods[0]
+    const nextPeriod = weatherData.dailyForecast.dailyPeriods[1]
+
     const currentObservation = weatherData.latestObservation.observation
 
-    const isDayTime = (firstWeatherPeriod.name === "Today" || firstWeatherPeriod.name === "This Afternoon")
-    const highTemp = (isDayTime ? firstWeatherPeriod.temperature : secondWeatherPeriod.temperature)
-    const lowTemp = (isDayTime ? secondWeatherPeriod.temperature : firstWeatherPeriod.temperature)
+    // returns a list of temperatures in the following format:
+    // [0] = lowTemp
+    // [1] = highTemp (does not exist if at night)
+    function getTemps(timeOfDay: TimeOfDay, currentPeriod:DailyPeriod, nextPeriod: DailyPeriod): Temperature[] {
+        if (timeOfDay === TimeOfDay.EarlyMorning) {
+            return [currentPeriod.temperature, nextPeriod.temperature]
+        } else if (timeOfDay === TimeOfDay.Day) {
+            return [nextPeriod.temperature, currentPeriod.temperature]
+        } else {
+            return [currentPeriod.temperature]
+        }
+
+    }
+
+    const temps = getTemps(timeOfDay, currentPeriod, nextPeriod)
+
 
     return {
-        timeOfDay: firstWeatherPeriod.name,
-        shortCast: firstWeatherPeriod.shortCast,
+        timeOfDay: currentPeriod.name,
+        shortCast: currentPeriod.shortCast,
         todayForecast: {
-            lowTemp: lowTemp,
-            highTemp: highTemp,
-            precipProb: firstWeatherPeriod.precipProb,
-            wind: firstWeatherPeriod.wind,
+            lowTemp: temps[0],
+            highTemp: timeOfDay === TimeOfDay.Night ? null : temps[1],
+            precipProb: currentPeriod.precipProb,
+            wind: currentPeriod.wind,
             nowTemp: currentObservation.temperature,
         },
         todayObserved: {

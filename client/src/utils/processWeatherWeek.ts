@@ -1,17 +1,28 @@
-import { WeatherData, IWeatherDay } from '../types/types';
-const processWeatherWeek = (weatherData: WeatherData): IWeatherDay[] => {
+import { WeatherData, IWeatherDay, TimeOfDay } from '../types/types';
+const processWeatherWeek = (weatherData: WeatherData, timeOfDay: TimeOfDay): IWeatherDay[] => {
     const weatherDays: IWeatherDay[] = []
     const dailyPeriods = weatherData.dailyForecast.dailyPeriods
 
-    dailyPeriods.forEach((period) => {
+    let startingIndex: number;
+
+    if(timeOfDay === TimeOfDay.EarlyMorning) {
+        startingIndex = 3
+    } else if(timeOfDay === TimeOfDay.Day) {
+        startingIndex = 2
+    } else {
+        startingIndex = 1
+    }
+
+
+    for(let i = startingIndex; i < dailyPeriods.length; i+= 2) {
         weatherDays.push({
-            date: period.name,
-            shortCast: period.shortCast,
-            highTemp: period.temperature.value,
-            lowTemp: period.temperature.value,
-            precipProb: period.precipProb,
+            date: dailyPeriods[i].name,
+            shortCast: dailyPeriods[i].shortCast,
+            highTemp: dailyPeriods[i].temperature.value,
+            lowTemp: dailyPeriods[i+1].temperature.value,
+            precipProb: dailyPeriods[i].precipProb,
         })
-    })
+    }
 
     return weatherDays
 

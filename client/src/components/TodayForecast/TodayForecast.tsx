@@ -9,9 +9,9 @@ const TodayForecast = (props: ITodayForecast) => {
     return (
     <div className="todayForecast">
         <div className="temperaturesContainer">
-            <p className ="todayTemperature" id="highTemp">
+            {highTemp && <p className ="todayTemperature" id="highTemp">
                 {highTemp.value}
-            </p>
+            </p>}
             <p className ="todayTemperature" id="nowTemp">
                 {Math.round(nowTemp)}
             </p>
