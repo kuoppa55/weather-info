@@ -42,3 +42,15 @@ def get_hourly_forecast(nwsOffice, gridX, gridY):
     response = requests.get(url).json()
 
     return response
+
+def get_alerts(zoneId):
+    url = f'https://api.weather.gov/alerts/active/zone/{zoneId}'
+    response = requests.get(url).json()
+
+    return response
+
+def get_product(productId):
+    url = f'https://api.weather.gov/products/types/{productId}'
+    response = requests.get(url).json()
+
+    return response

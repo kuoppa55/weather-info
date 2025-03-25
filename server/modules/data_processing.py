@@ -133,7 +133,6 @@ def parse_latest_observation(observation):
     sky = parsedMetar.sky
     if sky:
         parsed_observation['sky'] = sky
-    print(parsedMetar)
     
     return parsed_observation
 
@@ -183,7 +182,6 @@ def getHourlyForecast(point):
 
 def getLatestObservation(point):
     observationStation = api_requests.get_observation_stations(point)['features'][0]
-    print(observationStation)
     properties = observationStation['properties']
     name = properties['name']
     stationId = properties['stationIdentifier']
@@ -199,6 +197,37 @@ def getLatestObservation(point):
     latestObservation['observation'] = parse_latest_observation(latestObservationProperties)
 
     return latestObservation
+
+
+def getAlerts(point):
+    forecastZoneUrl = point['properties']['forecastZone']
+    zoneId = forecastZoneUrl.rsplit('/', 1)[-1]
+    rawAlerts = api_requests.get_alerts(zoneId)
+    if rawAlerts['features']:
+            alertProperties = rawAlerts['features'][0]['properties']
+            alertId = alertProperties['id']
+            print(alertId)
+            alertStatus = alertProperties['status']
+            print(alertStatus)
+            alertMessageType = alertProperties['messageType']
+            print(alertMessageType)
+            print(alertProperties['category'])
+            print(alertProperties['event'])
+            alertHeadline = alertProperties['headline']
+            print(alertHeadline)
+            alertDescription = alertProperties['description']
+            print(alertDescription)
+
+#PWO
+#CFP
+def getProducts():
+    pwoProduct = api_requests.get_product("PWO")
+    cfpProduct = api_requests.get_product("CFP")
+    
+    print(pwoProduct)
+    print(cfpProduct)
+
+
 
 
     

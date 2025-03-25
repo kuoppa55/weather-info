@@ -20,20 +20,19 @@ app.add_middleware(
 
 client = genai.Client(api_key="AIzaSyCbIgFaIhAYQZg6rjt7GWj7K0v6y67D1yQ")
 
-@app.get('/weather/zip/{zipcode}')
-async def get_weather_information(zipcode: str):
-    lat_lon = api_requests.get_lat_lon_from_zip(zipcode)
-    point = api_requests.get_point(lat_lon)
 
-    print(point)
+def process_point_information(lat, lon, point):
+
 
     dailyForecast = data_processing.getDailyForecast(point)
     hourlyForecast = data_processing.getHourlyForecast(point)
     latestObservation = data_processing.getLatestObservation(point)
+    zoneId = data_processing.getAlerts(point)
+    products = data_processing.getProducts()
 
     response = {
-        "latitude": lat_lon[0],
-        "longitude": lat_lon[1],
+        "latitude": lat,
+        "longitude": lon,
         "dailyForecast": dailyForecast,
         "hourlyForecast": hourlyForecast,
         "latestObservation": latestObservation,
@@ -45,19 +44,14 @@ async def get_weather_information(zipcode: str):
 async def get_weather_information_from_location(lat: float, lon: float):
     point = api_requests.get_point([lat, lon])
 
-    dailyForecast = data_processing.getDailyForecast(point)
-    hourlyForecast = data_processing.getHourlyForecast(point)
-    latestObservation = data_processing.getLatestObservation(point)
+    return process_point_information(lat, lon, point)
 
-    response = {
-        "latitude": lat,
-        "longitude": lon,
-        "dailyForecast": dailyForecast,
-        "hourlyForecast": hourlyForecast,
-        "latestObservation": latestObservation,
-    }
+@app.get('/weather/zip/{zipcode}')
+async def get_weather_information_from_zip(zipcode: str):
+    lat_lon = api_requests.get_lat_lon_from_zip(zipcode)
+    point = api_requests.get_point(lat_lon)
 
-    return response
+    return process_point_information(lat_lon[0], lat_lon[1], point)
 
 
 
