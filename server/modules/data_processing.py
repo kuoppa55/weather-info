@@ -183,6 +183,7 @@ def getHourlyForecast(point):
 
 def getLatestObservation(point):
     observationStation = api_requests.get_observation_stations(point)['features'][0]
+    print(observationStation)
     properties = observationStation['properties']
     name = properties['name']
     stationId = properties['stationIdentifier']

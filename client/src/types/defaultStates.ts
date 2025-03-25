@@ -45,8 +45,8 @@ const defaultDailyForecast: DailyForecast = {
 }
 
 export const defaultWeatherData: WeatherData = {
-    latitude: "",
-    longitude: "",
+    latitude: 0.0,
+    longitude: 0.0,
     dailyForecast: defaultDailyForecast,
     hourlyForecast: defaultHourlyForecast,
     latestObservation: defaultLatestObservation,

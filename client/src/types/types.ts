@@ -1,6 +1,6 @@
 export type WeatherData = {
-    latitude: string,
-    longitude: string,
+    latitude: number,
+    longitude: number,
     dailyForecast: DailyForecast,
     hourlyForecast: IHourlyForecast,
     latestObservation: LatestObservation,

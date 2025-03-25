@@ -25,6 +25,8 @@ async def get_weather_information(zipcode: str):
     lat_lon = api_requests.get_lat_lon_from_zip(zipcode)
     point = api_requests.get_point(lat_lon)
 
+    print(point)
+
     dailyForecast = data_processing.getDailyForecast(point)
     hourlyForecast = data_processing.getHourlyForecast(point)
     latestObservation = data_processing.getLatestObservation(point)
