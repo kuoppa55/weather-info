@@ -39,6 +39,24 @@ async def get_weather_information(zipcode: str):
 
     return response
 
+@app.get('/weather/location/{lat}/{lon}')
+async def get_weather_information_from_location(lat: float, lon: float):
+    point = api_requests.get_point([lat, lon])
+
+    dailyForecast = data_processing.getDailyForecast(point)
+    hourlyForecast = data_processing.getHourlyForecast(point)
+    latestObservation = data_processing.getLatestObservation(point)
+
+    response = {
+        "latitude": lat,
+        "longitude": lon,
+        "dailyForecast": dailyForecast,
+        "hourlyForecast": hourlyForecast,
+        "latestObservation": latestObservation,
+    }
+
+    return response
+
 
 
 

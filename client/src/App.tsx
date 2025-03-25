@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import axios from 'axios'
-import ZipCode from './components/ZipCode/ZipCode';
 import { WeatherData } from './types/types';
 import { defaultWeatherData } from './types/defaultStates';
 import Weather from './components/Weather/Weather';
+import Header from './components/Header/Header';
 
 function App() {
   const [weatherData, setWeatherData] = useState<WeatherData>(defaultWeatherData)
@@ -11,11 +11,11 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const fetchWeather = async(zip: string) => {
+  const fetchWeather = async(zip: string = "", lat: number = -1.0, lon: number = -1.0) => {
     setLoading(true)
     setError(null)
     try {
-      const response = await axios.get(`/weather/zip/${zip}`)
+      const response = zip === "" ? await axios.get(`/weather/location/${lat}/${lon}`) : await axios.get(`/weather/zip/${zip}`)
       setWeatherData(response.data)
       console.log(response.data)
     } catch (err) {
@@ -25,10 +25,16 @@ function App() {
     }
   }
 
+  const zipCodeProps = {
+    zipCode: zipCode,
+    setZipCode: setZipCode,
+    fetchWeather: fetchWeather,
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <ZipCode zipCode={zipCode} setZipCode={setZipCode} fetchWeather={fetchWeather}/>
+        <Header zipCodeProps={zipCodeProps}/>
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
         <div className="weatherContainer">

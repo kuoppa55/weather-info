@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    align-items: center;
+}
+.headerTitle {
+    margin-right: 5em;
+    margin-left: 0.5em;
+    font-family: 'Playfair Display', serif;
+    font-size:64px;
+    font-weight: normal;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}

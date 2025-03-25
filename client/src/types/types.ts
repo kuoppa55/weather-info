@@ -114,3 +114,9 @@ export enum TimeOfDay {
     Day,
     Night,
 }
+
+export interface ZipCodeProps {
+    zipCode: string,
+    setZipCode: (zip: string) => void,
+    fetchWeather: (zip: string) => void,
+}
