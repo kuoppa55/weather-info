@@ -135,23 +135,37 @@ def getLatestObservation(point):
 
 
 def getAlerts(point):
-    forecastZoneUrl = point['properties']['forecastZone']
-    zoneId = forecastZoneUrl.rsplit('/', 1)[-1]
-    rawAlerts = api_requests.get_alerts(zoneId)
+    forecastZoneUrl = point['properties']['county']
+    countyId = forecastZoneUrl.rsplit('/', 1)[-1]
+    rawAlerts = api_requests.get_alerts(countyId)
+    parsedAlerts = []
     if rawAlerts['features']:
-            alertProperties = rawAlerts['features'][0]['properties']
-            alertId = alertProperties['id']
-            print(alertId)
-            alertStatus = alertProperties['status']
-            print(alertStatus)
-            alertMessageType = alertProperties['messageType']
-            print(alertMessageType)
-            print(alertProperties['category'])
-            print(alertProperties['event'])
-            alertHeadline = alertProperties['headline']
-            print(alertHeadline)
-            alertDescription = alertProperties['description']
-            print(alertDescription)
+            for rawAlert in rawAlerts['features']:
+                props = rawAlert['properties']
+                alert = {}
+
+                alert['id'] = props['id']
+                alert['areaDesc'] = props['areaDesc']
+                alert['sent'] = props['sent']
+                alert['effective'] = props['effective']
+                alert['onset'] = props['onset']
+                alert['expires'] = props['expires']
+                alert['ends'] = props['ends']
+                alert['status'] = props['status']
+                alert['messageType'] = props['messageType']
+                alert['category'] = props['category']
+                alert['event'] = props['event']
+                alert['headline'] = props['headline']
+                alert['description'] = props['description']
+                alert['severity'] = props['severity']
+                alert['certainty'] = props['certainty']
+                alert['urgency'] = props['urgency']
+                alert['instruction'] = props['instruction']
+                alert['response'] = props['response']
+
+                parsedAlerts.append(alert)
+
+    return parsedAlerts
 
 #PWO
 #CFP
