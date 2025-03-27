@@ -24,7 +24,9 @@ const processWeatherToday = (weatherData: WeatherData, timeOfDay: TimeOfDay): IW
 
     function getCurrentTemperature(observation: Observation, hourlyPeriods: HourlyPeriod[]): number {
         const obsTime = new Date(observation.timestamp)
+        console.log("OBS TIME: " + obsTime)
         const now = new Date()
+        console.log("NOW: " + now)
 
         const diffMs = now.getTime() - obsTime.getTime()
         const diffMinutes = diffMs / (1000 * 60)
@@ -33,10 +35,6 @@ const processWeatherToday = (weatherData: WeatherData, timeOfDay: TimeOfDay): IW
             for(const period of hourlyPeriods) {
                 const start = new Date(period.startTime)
                 const end = new Date(period.endTime)
-                console.log("Start: " + start)
-                console.log("Now: " + now)
-                console.log("End: " + end)
-                console.log(now >= start && now <= end)
                 if (now >= start && now <= end) {
                     return period.temperature.value
                 }

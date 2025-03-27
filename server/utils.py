@@ -78,7 +78,9 @@ def get_observation_from_metar(rawMetar, observation):
 
     
     parsed_observation['metar'] = rawMetar
-    parsed_observation['timestamp'] = parsedMetar.time
+    dt_naive = parsedMetar.time
+    dt_utc = dt_naive.replace(tzinfo=timezone.utc)
+    parsed_observation['timestamp'] = dt_utc
     
     temperature = parsedMetar.temp
     if temperature:
