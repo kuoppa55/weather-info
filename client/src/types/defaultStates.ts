@@ -18,7 +18,8 @@ const defaultObservation: Observation = {
     visibility: 0,
     minTemp: 0,
     maxTemp: 0,
-    relativeHumidity: 0
+    relativeHumidity: 0,
+    timestamp: "",
 }
 const defaultLatestObservation: LatestObservation = {
     name: "",

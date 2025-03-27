@@ -62,6 +62,7 @@ export type Observation = {
     minTemp: number,
     maxTemp: number,
     relativeHumidity: number,
+    timestamp: string,
 }
 
 export type Temperature = {

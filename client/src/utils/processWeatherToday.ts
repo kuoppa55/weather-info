@@ -1,4 +1,4 @@
-import { WeatherData, IWeatherToday, TimeOfDay, Temperature, DailyPeriod } from '../types/types';
+import { WeatherData, IWeatherToday, TimeOfDay, Temperature, DailyPeriod, Observation, HourlyPeriod } from '../types/types';
 const processWeatherToday = (weatherData: WeatherData, timeOfDay: TimeOfDay): IWeatherToday => {
 
     const currentPeriod = weatherData.dailyForecast.dailyPeriods[0]
@@ -22,6 +22,31 @@ const processWeatherToday = (weatherData: WeatherData, timeOfDay: TimeOfDay): IW
 
     const temps = getTemps(timeOfDay, currentPeriod, nextPeriod)
 
+    function getCurrentTemperature(observation: Observation, hourlyPeriods: HourlyPeriod[]): number {
+        const obsTime = new Date(observation.timestamp)
+        const now = new Date()
+
+        const diffMs = now.getTime() - obsTime.getTime()
+        const diffMinutes = diffMs / (1000 * 60)
+
+        if (diffMinutes > 60) {
+            for(const period of hourlyPeriods) {
+                const start = new Date(period.startTime)
+                const end = new Date(period.endTime)
+                console.log("Start: " + start)
+                console.log("Now: " + now)
+                console.log("End: " + end)
+                console.log(now >= start && now <= end)
+                if (now >= start && now <= end) {
+                    return period.temperature.value
+                }
+            }
+            return 0
+        } else {
+            return observation.temperature
+        }
+    }
+
 
     return {
         timeOfDay: currentPeriod.name,
@@ -31,7 +56,7 @@ const processWeatherToday = (weatherData: WeatherData, timeOfDay: TimeOfDay): IW
             highTemp: timeOfDay === TimeOfDay.Night ? null : temps[1],
             precipProb: currentPeriod.precipProb,
             wind: currentPeriod.wind,
-            nowTemp: currentObservation.temperature,
+            nowTemp: getCurrentTemperature(currentObservation, weatherData.hourlyForecast.hourlyPeriods)
         },
         todayObserved: {
             wind: currentObservation.wind,
