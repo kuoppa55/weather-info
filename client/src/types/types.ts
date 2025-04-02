@@ -87,6 +87,7 @@ export type IAlert = {
     response: string,
     code: string,
     eventCode: string,
+    coordinates: [number, number][],
 }
 
 export type Temperature = {

@@ -163,6 +163,11 @@ def getAlerts(point):
                 alert['instruction'] = props['instruction']
                 alert['response'] = props['response']
 
+                geometry = rawAlert['geometry']
+                if geometry:
+                    print(geometry)
+                    if geometry['type'] == 'Polygon':
+                        alert['coordinates'] = geometry['coordinates'][0]
                 parsedAlerts.append(alert)
 
     return parsedAlerts

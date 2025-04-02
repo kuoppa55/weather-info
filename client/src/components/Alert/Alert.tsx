@@ -19,7 +19,7 @@ const Alert = (props: AlertProps) => {
             Expires: {alert.expires}
         </div>
         <div className='alertDescription'>
-            {alert.description}
+            Coordinates: {alert.coordinates}
         </div>
     </div>
   )
