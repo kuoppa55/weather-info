@@ -1,0 +1,14 @@
+.alert {
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 1em;
+    padding: 1em;
+    border: 3px solid var(--alert-color, #ccc);
+    background-color: var(--alert-bg, #f9f9f9);
+    color: var(--alert-text, #000);
+    font-family: 'Playfair Display', serif;
+}
+
+.alertEvent {
+    font-size: 32px;
+}

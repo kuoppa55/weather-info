@@ -12,11 +12,12 @@ import BaseLayer from 'ol/layer/Base'
 import {fromLonLat} from 'ol/proj'
 import {Fill, Stroke, Style} from 'ol/style'
 import 'ol/ol.css'
+import { ALERT_COLORS } from '../../types/alertColors'
 
 interface WeatherMapProps {
     latitude: number,
     longitude: number,
-    polygonCoordsList?: [number, number][][]
+    polygonCoordsList?: [coords: [number, number][], alertType: string][]
 }
 
 const WeatherMap = (props: WeatherMapProps) => {
@@ -33,20 +34,25 @@ const WeatherMap = (props: WeatherMapProps) => {
         ]
 
         if(polygonCoordsList && polygonCoordsList.length > 0) {
-            const features = polygonCoordsList.map(coords => {
+            const features = polygonCoordsList.map(([coords, alertType]) => {
                 const projected = coords.map(coord => fromLonLat(coord))
                 const polygon = new Polygon([projected])
-                return new Feature({geometry: polygon})
-            })
+                
+                const feature = new Feature({geometry: polygon})
 
-            features.forEach(f => 
-                f.setStyle(
+                const hex = ALERT_COLORS[alertType]
+                const fillHex = hex + '33'
+
+                feature.setStyle(
                     new Style({
-                        stroke: new Stroke({ color: 'blue', width: 2 }),
-                        fill: new Fill({ color: 'rgba(0, 0, 255, 0.2)' }),
+                        stroke: new Stroke({ color: hex, width: 3 }),
+                        fill: new Fill({color: fillHex})
                     })
                 )
-            )
+
+                return feature
+            })
+
 
             const vectorLayer = new VectorLayer({
                 source: new VectorSource({features}),

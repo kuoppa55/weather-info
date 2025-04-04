@@ -9,9 +9,10 @@ const TodayObserved = (props: ITodayObserved) => {
              <h2 className="latestObservationsLabel">Latest Observation</h2>
                 <h4 className="stationInformation">{stationId} {stationName}</h4>
                 <div className="observationsGrid">
+                    {(wind.windSpeed && wind.windDirection) && 
                     <div className="nowWind">
                         Wind: {wind.windSpeed.toFixed(1)} mph from {wind.windDirection}
-                    </div>
+                    </div>}
                     {humidity &&  <div className="nowHumidity">Humidity: {humidity.toFixed(1)}%</div>}
                     {gust && <div className="nowGust">Gust: {gust.toFixed(1)} mph</div>}
                     {visibility && <div className="nowVis">Visibility: {visibility} miles</div>}
