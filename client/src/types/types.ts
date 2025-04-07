@@ -4,6 +4,7 @@ export type WeatherData = {
     dailyForecast: DailyForecast,
     hourlyForecast: IHourlyForecast,
     latestObservation: LatestObservation,
+    currentAlerts: IAlert[],
 }
 
 
@@ -62,6 +63,31 @@ export type Observation = {
     minTemp: number,
     maxTemp: number,
     relativeHumidity: number,
+    timestamp: string,
+}
+
+export type IAlert = {
+    id: string,
+    areaDesc: string,
+    sent: string,
+    effective: string,
+    onset: string,
+    expires: string,
+    ends: string,
+    status: string,
+    messageType: string,
+    category: string,
+    event: string,
+    headline: string,
+    description: string,
+    severity: string,
+    certainty: string,
+    urgency: string,
+    instruction: string,
+    response: string,
+    code: string,
+    eventCode: string,
+    coordinates: [number, number][],
 }
 
 export type Temperature = {

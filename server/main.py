@@ -25,7 +25,7 @@ def process_point_information(lat, lon, point):
     dailyForecast = data_processing.getDailyForecast(point)
     hourlyForecast = data_processing.getHourlyForecast(point)
     latestObservation = data_processing.getLatestObservation(point)
-    zoneId = data_processing.getAlerts(point)
+    currentAlerts = data_processing.getAlerts(point)
     products = data_processing.getProducts()
 
     response = {
@@ -34,6 +34,7 @@ def process_point_information(lat, lon, point):
         "dailyForecast": dailyForecast,
         "hourlyForecast": hourlyForecast,
         "latestObservation": latestObservation,
+        "currentAlerts": currentAlerts,
     }
 
     return response
