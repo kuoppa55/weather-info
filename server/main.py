@@ -1,4 +1,3 @@
-from google import genai
 import utils as utils
 from modules import api_requests
 from modules import data_processing
@@ -18,7 +17,6 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-client = genai.Client(api_key="AIzaSyCbIgFaIhAYQZg6rjt7GWj7K0v6y67D1yQ")
 
 
 def process_point_information(lat, lon, point):
