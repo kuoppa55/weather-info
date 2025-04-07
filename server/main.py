@@ -26,7 +26,6 @@ def process_point_information(lat, lon, point):
     hourlyForecast = data_processing.getHourlyForecast(point)
     latestObservation = data_processing.getLatestObservation(point)
     currentAlerts = data_processing.getAlerts(point)
-    products = data_processing.getProducts()
 
     response = {
         "latitude": lat,

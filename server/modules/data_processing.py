@@ -133,6 +133,14 @@ def getLatestObservation(point):
 
     return latestObservation
 
+def getAlertPolygon(rawAlert):
+    geometry = rawAlert['geometry']
+    if geometry:
+        if geometry['type'] == 'Polygon':
+            return geometry['coordinates'][0]
+    
+    affectedZones = rawAlert['properties']['affectedZones']
+    print(affectedZones)
 
 def getAlerts(point):
     forecastZoneUrl = point['properties']['county']
@@ -163,20 +171,11 @@ def getAlerts(point):
                 alert['instruction'] = props['instruction']
                 alert['response'] = props['response']
 
-                geometry = rawAlert['geometry']
-                print(geometry)
-                if geometry:
-                    if geometry['type'] == 'Polygon':
-                        alert['coordinates'] = geometry['coordinates'][0]
+                alert['coordinates'] = getAlertPolygon(rawAlert)
+
                 parsedAlerts.append(alert)
 
     return parsedAlerts
-
-#PWO
-#CFP
-def getProducts():
-    pwoProduct = api_requests.get_product("PWO")
-    cfpProduct = api_requests.get_product("CFP")
 
 
 
