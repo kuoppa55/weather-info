@@ -135,22 +135,36 @@ def getLatestObservation(point):
 
     return latestObservation
 
+def merge_geometries_to_multipolygon(geometries: list[dict]) -> dict:
+    multipolygon_coords = []
 
-def getAlertMultiPolygonFromGeoCode(geocodeList):
-    sameCode = geocodeList['SAME']
+    for geom in geometries:
+        if geom['type'] == "Polygon":
+            multipolygon_coords.append(geom['coordinates'])
+        elif geom['type'] == 'MultiPolygon':
+            multipolygon_coords.extend(geom['coordinates'])
+        else:
+            print(f"Unsupported geometry type: {geom['type']}")
+    return {
+        "type": "MultiPolygon",
+        "coordinates": multipolygon_coords,
+    }
+
+def getAlertMultiPolygonFromGeoCode(fips_list, fips_map):
+    geometries = [fips_map[fips[1:]] for fips in fips_list if fips[1:] in fips_map]
+    multipolygon_geojson = merge_geometries_to_multipolygon(geometries)
+    return multipolygon_geojson
 
 
-def getAlertPolygon(rawAlert):
+def getAlertGeometry(rawAlert, fips_map):
     geometry = rawAlert['geometry']
     if geometry:
-        if geometry['type'] == 'Polygon':
-            return geometry['coordinates'][0]
-    
-    affectedZones = rawAlert['properties']['affectedZones']
-    print(rawAlert['properties'])
-    print(affectedZones)
+        return geometry
+    geocode = rawAlert['properties']['geocode']
+    geometry = getAlertMultiPolygonFromGeoCode(geocode['SAME'], fips_map)
+    return geometry
 
-def getAlerts(point):
+def getAlerts(point, fips_map):
     forecastZoneUrl = point['properties']['county']
     countyId = forecastZoneUrl.rsplit('/', 1)[-1]
     rawAlerts = api_requests.get_alerts(countyId)
@@ -179,7 +193,7 @@ def getAlerts(point):
                 alert['instruction'] = props['instruction']
                 alert['response'] = props['response']
 
-                alert['coordinates'] = getAlertPolygon(rawAlert)
+                alert['geometry'] = getAlertGeometry(rawAlert, fips_map)
 
                 parsedAlerts.append(alert)
 

@@ -13,15 +13,17 @@ import {fromLonLat} from 'ol/proj'
 import {Fill, Stroke, Style} from 'ol/style'
 import 'ol/ol.css'
 import { ALERT_COLORS } from '../../types/alertColors'
+import { Geometry } from '../../types/types'
+import { MultiPolygon } from 'ol/geom'
 
 interface WeatherMapProps {
     latitude: number,
     longitude: number,
-    polygonCoordsList?: [coords: [number, number][], alertType: string][]
+    geometriesList?: [geometry: Geometry, alertType: string][]
 }
 
 const WeatherMap = (props: WeatherMapProps) => {
-    const {latitude, longitude, polygonCoordsList} = props
+    const {latitude, longitude, geometriesList} = props
     const mapRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -33,12 +35,30 @@ const WeatherMap = (props: WeatherMapProps) => {
             }),
         ]
 
-        if(polygonCoordsList && polygonCoordsList.length > 0) {
-            const features = polygonCoordsList.map(([coords, alertType]) => {
-                const projected = coords.map(coord => fromLonLat(coord))
-                const polygon = new Polygon([projected])
+        if(geometriesList && geometriesList.length > 0) {
+            const features = geometriesList.map(([geometry, alertType]) => {
+                let olGeometry
+
+                if(geometry.type === "Polygon") {
+                    const projected = geometry.coordinates.map(ring =>
+                        ring.map(coord => fromLonLat(coord))
+                    )
+                    olGeometry = new Polygon(projected);
+                } else if (geometry.type === "MultiPolygon") {
+                    const projected = geometry.coordinates.map(polygon =>
+                        polygon.map(ring =>
+                            ring.map(coord => fromLonLat(coord))
+                        )
+                    )
+                    olGeometry = new MultiPolygon(projected)
+                } else {
+                    console.warn(`Unsupported geometry type`)
+                    return null
+                }
+
+                console.log(olGeometry)
                 
-                const feature = new Feature({geometry: polygon})
+                const feature = new Feature({geometry: olGeometry})
 
                 const hex = ALERT_COLORS[alertType]
                 const fillHex = hex + '33'
@@ -51,7 +71,7 @@ const WeatherMap = (props: WeatherMapProps) => {
                 )
 
                 return feature
-            })
+            }).filter((f): f is Feature<Polygon | MultiPolygon> => f !== null)
 
 
             const vectorLayer = new VectorLayer({

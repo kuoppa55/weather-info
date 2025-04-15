@@ -8,7 +8,7 @@ import processWeatherWeek from '../../utils/processWeatherWeek'
 import getTimeOfDay from '../../utils/getTimeOfDay'
 import WeatherMap from '../WeatherMap/WeatherMap'
 import Alerts from '../Alerts/Alerts'
-import getAlertsCoordinateList from '../../utils/getAlertsCoordinateList'
+import getAlertsGeometriesList from '../../utils/getAlertsGeometriesList'
 const Weather = (weatherData: WeatherData) => {
   const timeOfDay = getTimeOfDay()
   return (
@@ -17,7 +17,7 @@ const Weather = (weatherData: WeatherData) => {
         <div className="weatherCenter">
           <Week weatherDays={processWeatherWeek(weatherData, timeOfDay)}/>
           <Alerts alerts={weatherData.currentAlerts}/>
-          <WeatherMap latitude={weatherData.latitude} longitude={weatherData.longitude} polygonCoordsList={getAlertsCoordinateList(weatherData.currentAlerts)}/>
+          <WeatherMap latitude={weatherData.latitude} longitude={weatherData.longitude} geometriesList={getAlertsGeometriesList(weatherData.currentAlerts)}/>
         </div>
     </div>
   )
