@@ -3,6 +3,8 @@ from metar import Metar
 from zoneinfo import ZoneInfo
 from datetime import datetime, timezone
 from . import api_requests
+import geopandas as gpd
+from shapely.geometry import MultiPolygon
 
 def parse_daily_period(period):
     parsed_daily_period = {
@@ -133,6 +135,11 @@ def getLatestObservation(point):
 
     return latestObservation
 
+
+def getAlertMultiPolygonFromGeoCode(geocodeList):
+    sameCode = geocodeList['SAME']
+
+
 def getAlertPolygon(rawAlert):
     geometry = rawAlert['geometry']
     if geometry:
@@ -140,6 +147,7 @@ def getAlertPolygon(rawAlert):
             return geometry['coordinates'][0]
     
     affectedZones = rawAlert['properties']['affectedZones']
+    print(rawAlert['properties'])
     print(affectedZones)
 
 def getAlerts(point):
