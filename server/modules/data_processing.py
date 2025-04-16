@@ -136,51 +136,66 @@ def getLatestObservation(point):
 def merge_geometries_to_multipolygon(geometries: list[dict]) -> dict:
     multipolygon_coords = []
 
-<<<<<<< HEAD
-def getAlerts(point):
-    countyUrl = point['properties']['county']
-    countyId = countyUrl.rsplit('/', 1)[-1]
-    countyAlerts = api_requests.get_alerts(countyId)
+    for geom in geometries:
+        if geom['type'] == "Polygon":
+            multipolygon_coords.append(geom['coordinates'])
+        elif geom['type'] == 'MultiPolygon':
+            multipolygon_coords.extend(geom['coordinates'])
+        else:
+            print(f"Unsupported geometry type: {geom['type']}")
+    return {
+        "type": "MultiPolygon",
+        "coordinates": multipolygon_coords,
+    }
+
+def getAlertMultiPolygonFromGeoCode(fips_list, fips_map):
+    geometries = [fips_map[fips[1:]] for fips in fips_list if fips[1:] in fips_map]
+    multipolygon_geojson = merge_geometries_to_multipolygon(geometries)
+    return multipolygon_geojson
+
+
+def getAlertGeometry(rawAlert, fips_map):
+    geometry = rawAlert['geometry']
+    if geometry:
+        return geometry
+    geocode = rawAlert['properties']['geocode']
+    geometry = getAlertMultiPolygonFromGeoCode(geocode['SAME'], fips_map)
+    return geometry
+
+def getAlerts(point, fips_map):
     parsedAlerts = []
 
     zoneUrl = point['properties']['forecastZone']
     zoneId = zoneUrl.rsplit('/', 1)[-1]
-    zoneAlerts = api_requests.get_alerts(zoneId)
+    rawAlerts = api_requests.get_alerts(zoneId)
 
-    print(countyAlerts)
-    print("==============")
-    print("==============")
-    print(zoneAlerts)
-    if countyAlerts['features']:
-            for rawAlert in countyAlerts['features']:
-                props = rawAlert['properties']
-                alert = {}
+    if rawAlerts['features']:
+        for rawAlert in rawAlerts['features']:
+            props = rawAlert['properties']
+            alert = {}
 
-                alert['id'] = props['id']
-                alert['areaDesc'] = props['areaDesc']
-                alert['sent'] = props['sent']
-                alert['effective'] = props['effective']
-                alert['onset'] = props['onset']
-                alert['expires'] = props['expires']
-                alert['ends'] = props['ends']
-                alert['status'] = props['status']
-                alert['messageType'] = props['messageType']
-                alert['category'] = props['category']
-                alert['event'] = props['event']
-                alert['headline'] = props['headline']
-                alert['description'] = props['description']
-                alert['severity'] = props['severity']
-                alert['certainty'] = props['certainty']
-                alert['urgency'] = props['urgency']
-                alert['instruction'] = props['instruction']
-                alert['response'] = props['response']
+            alert['id'] = props['id']
+            alert['areaDesc'] = props['areaDesc']
+            alert['sent'] = props['sent']
+            alert['effective'] = props['effective']
+            alert['onset'] = props['onset']
+            alert['expires'] = props['expires']
+            alert['ends'] = props['ends']
+            alert['status'] = props['status']
+            alert['messageType'] = props['messageType']
+            alert['category'] = props['category']
+            alert['event'] = props['event']
+            alert['headline'] = props['headline']
+            alert['description'] = props['description']
+            alert['severity'] = props['severity']
+            alert['certainty'] = props['certainty']
+            alert['urgency'] = props['urgency']
+            alert['instruction'] = props['instruction']
+            alert['response'] = props['response']
 
-                geometry = rawAlert['geometry']
-                print(geometry)
-                if geometry:
-                    if geometry['type'] == 'Polygon':
-                        alert['coordinates'] = geometry['coordinates'][0]
-                parsedAlerts.append(alert)
+            alert['geometry'] = getAlertGeometry(rawAlert, fips_map)
+
+            parsedAlerts.append(alert)
 
     return parsedAlerts
 
