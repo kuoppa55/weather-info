@@ -133,7 +133,10 @@ def getLatestObservation(point):
 
     return latestObservation
 
+def merge_geometries_to_multipolygon(geometries: list[dict]) -> dict:
+    multipolygon_coords = []
 
+<<<<<<< HEAD
 def getAlerts(point):
     countyUrl = point['properties']['county']
     countyId = countyUrl.rsplit('/', 1)[-1]

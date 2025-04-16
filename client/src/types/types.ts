@@ -66,6 +66,18 @@ export type Observation = {
     timestamp: string,
 }
 
+type PolygonGeometry = {
+    type: "Polygon",
+    coordinates: number[][][],
+}
+
+type MultiPolygonGeometry = {
+    type: "MultiPolygon",
+    coordinates: number[][][][],
+}
+
+export type Geometry = PolygonGeometry | MultiPolygonGeometry
+
 export type IAlert = {
     id: string,
     areaDesc: string,
@@ -87,7 +99,7 @@ export type IAlert = {
     response: string,
     code: string,
     eventCode: string,
-    coordinates: [number, number][],
+    geometry: Geometry,
 }
 
 export type Temperature = {
