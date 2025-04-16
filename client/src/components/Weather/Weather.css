@@ -1,8 +1,19 @@
 .weather {
     display: flex;
-    margin-left: 1.5em;
+    flex-direction: column;
+    gap: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
 }
 
 .weatherCenter {
-    width: 70%;
+    width: 75%;
 }
+
+@media (min-width: 768px) {
+    .weather{
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }

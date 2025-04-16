@@ -5,8 +5,9 @@ import './TodayObserved.css'
 const TodayObserved = (props: ITodayObserved) => {
     const {stationId, stationName, wind, humidity, gust, visibility, pressure, metar} = props
     return (
-        <div className="todayObserved">
-             <h2 className="latestObservationsLabel">Latest Observation</h2>
+        <>
+            <h2 className="latestObservationsLabel">Latest Observation</h2>
+            <div className="todayObserved">
                 <h4 className="stationInformation">{stationId} {stationName}</h4>
                 <div className="observationsGrid">
                     {(wind && wind.windSpeed && wind.windDirection) && 
@@ -20,6 +21,7 @@ const TodayObserved = (props: ITodayObserved) => {
                 </div>
                 <p className="metarString">{metar}</p>
         </div>
+        </>
     )
 }
 

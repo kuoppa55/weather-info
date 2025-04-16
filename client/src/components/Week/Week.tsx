@@ -9,7 +9,7 @@ interface WeekProps {
 const Week = (props: WeekProps) => {
     const {weatherDays} = props
     return (
-        <div className="week">
+        <div className="week card">
             {weatherDays.slice(0, 6).map((day) => (
                     <Weekday {...day} />
                 ))}

@@ -4,6 +4,7 @@ import { WeatherData } from './types/types';
 import { defaultWeatherData } from './types/defaultStates';
 import Weather from './components/Weather/Weather';
 import Header from './components/Header/Header';
+import './App.css'
 
 function App() {
   const [weatherData, setWeatherData] = useState<WeatherData>(defaultWeatherData)

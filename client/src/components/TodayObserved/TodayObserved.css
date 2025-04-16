@@ -1,27 +1,24 @@
 .todayObserved {
-    background-color:azure;
-    border-radius: 1em;
+    background-color: #d8eaf7;
+    border-radius: 12px;
+    padding: 1em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    font-size: 0.95em;
+    line-height: 1.5em;
 }
 
 .latestObservationsLabel {
-    margin-top: 0em;
-    margin-bottom: 0em;
-    font-weight: normal;
-    font-size: 40px;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
 }
 
 .stationInformation {
     margin-top: 0em;
     font-weight: normal;
-    font-size: 24px;
 }
 
 .observationsGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    font-size: 20px;
 }
 
-.metarString {
-    font-size: 12px;
-}

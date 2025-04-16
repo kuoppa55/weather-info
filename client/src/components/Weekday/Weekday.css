@@ -1,11 +1,12 @@
 .weekday {
     text-align: center;
-    background-color:azure;
-    border-radius: 1em;
-    margin-left: 1em;
-    margin-bottom: 1em;
-    margin-right: 1em;
-    margin-top: 0.5em;
+    background-color: #d8eaf7;
+    border-radius: 12px;
+    padding: 0.1em;
+    margin: 0.5em;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    flex:1;
+    min-width: 0;
 }
 
 .weekdayDate {
@@ -17,12 +18,11 @@
 }
 
 .weekdayLowTemp {
-    font-size: 24px;
-    margin-top: 0em;
-    padding-top: 0em;
-    color: blue;
+    font-size: 1.2em;
+    color: #3498db;
 }
 
 .weekdayHighTemp {
-    font-size: 48px;
+    font-size: 1.4em;
+    color: #e74c3c;
 }

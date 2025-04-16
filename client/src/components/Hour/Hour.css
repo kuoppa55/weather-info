@@ -1,9 +1,9 @@
 .hour {
-    background-color:azure;
-    border-radius: 1em;
+    background-color: #d8eaf7;
+    border-radius: 12px;
     margin-bottom: 2em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding: 0.5em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .hourTime {

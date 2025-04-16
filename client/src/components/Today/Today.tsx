@@ -9,7 +9,7 @@ const Today = (props: IWeatherToday) => {
     const {timeOfDay, shortCast, todayForecast, todayObserved, todayHourly} = props
 
     return (
-        <div className="todayContainer">
+        <div className="todayContainer card">
             <h1 className="todayChild" id="todayHeader">{timeOfDay}</h1>
             <div className="todayChild" id="todayShortCast">{shortCast}</div>
             <div className="todayChild" id="todayForecastContainer">

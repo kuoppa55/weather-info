@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 .todayContainer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     display: flex;
-    width: 30em;
-    background: skyblue;
-    font-family: 'Playfair Display', serif;
+    width: 25%;
+    border: solid black 0.1em;
+    margin-right: 0.5em;
+    border-radius: 1em;;
 }
 
 #todayHeader {
@@ -29,7 +29,18 @@
     align-items: center;     /* Centers text vertically */
     text-align: center;      /* Ensures text is centered */
     padding: 10px;           /* Adds spacing for readability */
-    background: rgb(202, 230, 240);
+    background-color: #fff
 
+}
+
+.todayPanel {
+    background-color: #d8eaf7;
+    border-radius: 16px;
+    padding: 1.5em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Center everything vertically */
+    align-items: center;     /* Center horizontally */
 }
 
