@@ -135,12 +135,21 @@ def getLatestObservation(point):
 
 
 def getAlerts(point):
-    forecastZoneUrl = point['properties']['county']
-    countyId = forecastZoneUrl.rsplit('/', 1)[-1]
-    rawAlerts = api_requests.get_alerts(countyId)
+    countyUrl = point['properties']['county']
+    countyId = countyUrl.rsplit('/', 1)[-1]
+    countyAlerts = api_requests.get_alerts(countyId)
     parsedAlerts = []
-    if rawAlerts['features']:
-            for rawAlert in rawAlerts['features']:
+
+    zoneUrl = point['properties']['forecastZone']
+    zoneId = zoneUrl.rsplit('/', 1)[-1]
+    zoneAlerts = api_requests.get_alerts(zoneId)
+
+    print(countyAlerts)
+    print("==============")
+    print("==============")
+    print(zoneAlerts)
+    if countyAlerts['features']:
+            for rawAlert in countyAlerts['features']:
                 props = rawAlert['properties']
                 alert = {}
 
