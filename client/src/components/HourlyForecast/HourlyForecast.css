@@ -4,3 +4,20 @@
     font-weight: normal;
     font-size: 40px;
 }
+
+.hourlyForecast {
+    width: 100%;               /* Added to ensure full width */
+}
+
+.hoursContainer {
+    display: flex;             /* Changed to flex from grid */
+    flex-direction: column;    /* Stack items vertically */
+    width: 100%;               /* Added to ensure full width */
+    gap: 1rem;
+}
+
+@media (max-width: 600px) {
+    .hoursContainer {
+        width: 100%;           /* Reinforced for mobile */
+    }
+}

@@ -80,6 +80,7 @@ const WeatherMap = (props: WeatherMapProps) => {
 
             baseLayers.push(vectorLayer)
 
+
         }
         const map = new Map({
             target: mapRef.current,

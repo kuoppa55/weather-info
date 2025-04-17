@@ -1,9 +1,24 @@
 .week {
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     height: 13em;
     display: flex;
     justify-content: space-around;
+    gap: 0.5rem;
+    padding: 1rem;
     flex-wrap: wrap;
     border: solid 0.1em black;
-    border-radius: 1em;
+    border-radius: 1rem;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 600px) {
+    .week {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 }

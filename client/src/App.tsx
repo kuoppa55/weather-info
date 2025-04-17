@@ -35,11 +35,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Header zipCodeProps={zipCodeProps}/>
-        {loading && <p>Loading...</p>}
-        {error && <p>{error}</p>}
-        <div className="weatherContainer">
-          {(weatherData.dailyForecast.dailyPeriods[0] && !loading && !error) && <Weather {...weatherData} />}
+        <div className="container">
+          <Header zipCodeProps={zipCodeProps}/>
+          {loading && <p>Loading...</p>}
+          {error && <p>{error}</p>}
+          <div className="weatherContainer">
+            {(weatherData.dailyForecast.dailyPeriods[0] && !loading && !error) && <Weather {...weatherData} />}
+          </div>
         </div>
       </header>
     </div>

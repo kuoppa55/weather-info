@@ -4,7 +4,10 @@
     align-items: center;
     justify-content: center;
     display: flex;
-    width: 25%;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    max-width: 400px;
     border: solid black 0.1em;
     margin-right: 0.5em;
     border-radius: 1em;;
@@ -15,21 +18,25 @@
     margin-bottom: 0em;
     padding-bottom:0em;
     font-weight: normal;
-    font-size: 48px;
+    font-size: 2rem;
 }
 
 #todayShortCast {
     padding-top:0em;
-    font-size: 24px;
+    font-size: 1.2rem;
 }
 
 .todayChild {
-    width: 400px; /* Fixed width to align all child divs */
+    flex: 1 1 100%;
+    max-width: 360px;
+    width: 100%;
+    box-sizing: border-box;
     justify-content: center; /* Centers text inside each child div */
     align-items: center;     /* Centers text vertically */
     text-align: center;      /* Ensures text is centered */
-    padding: 10px;           /* Adds spacing for readability */
-    background-color: #fff
+    padding: 1rem;          /* Adds spacing for readability */
+    background-color: #fff;
+    border-radius: 1rem;
 
 }
 
@@ -42,5 +49,31 @@
     display: flex;
     justify-content: center; /* Center everything vertically */
     align-items: center;     /* Center horizontally */
+}
+
+@media (min-width: 600px) {
+    .todayContainer {
+        flex-wrap: nowrap;
+        width: 100%;
+        justify-content: space-between
+    }
+    .todayChild {
+        max-width: 100%;    /* Override the default 360px on mobile */
+        width: 100%;
+    }
+    #todayHeader {
+        font-size: 2.5rem;
+    }
+    #todayShortCast {
+        font-size: 1.5rem;
+    }
+        
+    #hourlyForecastContainer {
+        width: 100%;        /* Target the hourly container specifically */
+    }
+
+    .hourlyForecast {
+        width: 100%;        /* Reinforce width on mobile */
+    }
 }
 

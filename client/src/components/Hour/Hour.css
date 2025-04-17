@@ -1,9 +1,11 @@
 .hour {
     background-color: #d8eaf7;
     border-radius: 12px;
-    margin-bottom: 2em;
+    margin-bottom: 1rem;
     padding: 0.5em;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    width: 100%;               /* Added to ensure full width */
+    box-sizing: border-box;    /* Added so padding doesn't add to width */
 }
 
 .hourTime {
@@ -14,5 +16,12 @@
 
 .hourForecastDetails {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    width: 100%;               /* Added to ensure full width */
+}
+
+@media (min-width: 600px) {
+    .hourForecastDetails {
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
