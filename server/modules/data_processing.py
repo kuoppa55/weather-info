@@ -165,9 +165,9 @@ def getAlertGeometry(rawAlert, fips_map):
 def getAlerts(point, fips_map):
     parsedAlerts = []
 
-    zoneUrl = point['properties']['forecastZone']
-    zoneId = zoneUrl.rsplit('/', 1)[-1]
-    rawAlerts = api_requests.get_alerts(zoneId)
+    forecastZoneUrl = point['properties']['county']
+    countyId = forecastZoneUrl.rsplit('/', 1)[-1]
+    rawAlerts = api_requests.get_alerts(countyId)
 
     if rawAlerts['features']:
         for rawAlert in rawAlerts['features']:
