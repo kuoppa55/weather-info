@@ -1,12 +1,116 @@
 .alert {
     margin-right: 1em;
-    padding: 1em;
-    border: 3px solid var(--alert-color, #ccc);
+    padding: 1.2em;
+    border: 2px solid var(--alert-color, #ccc);
     background-color: var(--alert-bg, #f9f9f9);
     color: var(--alert-text, #000);
-    font-family: 'Playfair Display', serif;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.alert:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: var(--alert-color, #ccc);
 }
 
 .alertEvent {
-    font-size: 24px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--alert-color, #333);
+}
+
+.alertEffectiveTime, .alertExpiresTime {
+    font-size: 0.9rem;
+    margin: 4px 0;
+    color: #555;
+}
+
+.alertDetailsButton {
+    margin-top: 12px;
+    background-color: transparent;
+    color: var(--alert-color, #333);
+    border: 1px solid var(--alert-color, #ccc);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: 'Playfair Display', serif;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.alertDetailsButton:hover {
+    background-color: var(--alert-color, #ccc);
+    color: white;
+}
+
+.alertDetailsButton:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Existing modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    border-top: 5px solid var(--modal-color, #ccc);
+}
+
+.modal-times {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.modal-description {
+    margin: 15px 0;
+    white-space: pre-line;
+    line-height: 1.5;
+}
+
+.modal-close {
+    background-color: var(--modal-color, #ccc);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Optional hover effect for alerts */
+@media (hover: hover) {
+    .alert:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
 }

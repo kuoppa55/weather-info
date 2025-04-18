@@ -61,11 +61,14 @@ const WeatherMap = (props: WeatherMapProps) => {
                 const feature = new Feature({geometry: olGeometry})
 
                 const hex = ALERT_COLORS[alertType]
-                const fillHex = hex + '33'
+                const fillHex = hex + '55'
 
                 feature.setStyle(
                     new Style({
-                        stroke: new Stroke({ color: hex, width: 3 }),
+                        stroke: new Stroke({ 
+                            color: hex, 
+                            width: 3,
+                        }),
                         fill: new Fill({color: fillHex})
                     })
                 )
