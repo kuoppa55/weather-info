@@ -28,6 +28,17 @@ const WeatherMap = (props: WeatherMapProps) => {
     const {latitude, longitude, geometriesList, radarTimestamps} = props
     const mapRef = useRef<HTMLDivElement>(null)
 
+    const radarLayers: TileLayer<XYZ>[] = radarTimestamps.map((timestamp, index) => {
+        return new TileLayer({
+            source: new XYZ({
+                url: `https://tilecache.rainviewer.com/v2/radar/${timestamp}/256/{z}/{x}/{y}/5/0_0.png`,
+                crossOrigin: 'anonymous',
+            }),
+            visible: index === radarTimestamps.length - 1, // Only show the latest radar layer by default
+            opacity: 0.7,
+        });
+    });
+
     useEffect(() => {
         if (!mapRef.current) return
 
@@ -36,20 +47,8 @@ const WeatherMap = (props: WeatherMapProps) => {
                 source: new OSM(),
             }),
         ]
-
-        if (radarTimestamps && radarTimestamps.length > 0) {
-            radarTimestamps.forEach((timestamp, i) => {
-                const radarLayer = new TileLayer({
-                    source: new XYZ({
-                        url: `https://tilecache.rainviewer.com/v2/radar/${timestamp}/256/{z}/{x}/{y}/5/0_0.png`,
-                        crossOrigin: 'anonymous',
-                    }),
-                    visible: i === radarTimestamps.length - 1, // Only show the latest radar layer by default
-                    opacity: 0.7,
-                });
-                baseLayers.push(radarLayer);
-            });
-        }
+        
+        radarLayers.forEach(layer => baseLayers.push(layer));
 
         if(geometriesList && geometriesList.length > 0) {
             const features = geometriesList.map(([geometry, alertType]) => {
@@ -110,7 +109,22 @@ const WeatherMap = (props: WeatherMapProps) => {
             }),
         })
 
-        return () => map.setTarget(undefined)
+        let frameIndex = 0;
+        const totalFrames = radarLayers.length;
+
+        const animateRadar = () => {
+            radarLayers.forEach((layer, index) => {
+                layer.setVisible(index === frameIndex);
+            });
+            frameIndex = (frameIndex + 1) % totalFrames;
+        };
+
+        //const animationInterval = setInterval(animateRadar, 500); // Change frame every second
+
+        return () => {
+            //clearInterval(animationInterval)
+            map.setTarget(undefined)
+        }
     })
 
     return (
