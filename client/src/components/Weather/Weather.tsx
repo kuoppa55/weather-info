@@ -17,7 +17,8 @@ const Weather = (weatherData: WeatherData) => {
         <div className="weatherCenter">
           <Week weatherDays={processWeatherWeek(weatherData, timeOfDay)}/>
           <Alerts alerts={weatherData.currentAlerts}/>
-          <WeatherMap latitude={weatherData.latitude} longitude={weatherData.longitude} geometriesList={getAlertsGeometriesList(weatherData.currentAlerts)}/>
+          <WeatherMap latitude={weatherData.latitude} longitude={weatherData.longitude} 
+          geometriesList={getAlertsGeometriesList(weatherData.currentAlerts)} radarTimestamps={weatherData.radarTimestamps}/>
         </div>
     </div>
   )

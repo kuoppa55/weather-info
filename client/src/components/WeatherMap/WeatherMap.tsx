@@ -15,15 +15,17 @@ import 'ol/ol.css'
 import { ALERT_COLORS } from '../../types/alertColors'
 import { Geometry } from '../../types/types'
 import { MultiPolygon } from 'ol/geom'
+import { XYZ } from 'ol/source'
 
 interface WeatherMapProps {
     latitude: number,
     longitude: number,
     geometriesList?: [geometry: Geometry, alertType: string][]
+    radarTimestamps: number[]
 }
 
 const WeatherMap = (props: WeatherMapProps) => {
-    const {latitude, longitude, geometriesList} = props
+    const {latitude, longitude, geometriesList, radarTimestamps} = props
     const mapRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -34,6 +36,20 @@ const WeatherMap = (props: WeatherMapProps) => {
                 source: new OSM(),
             }),
         ]
+
+        if (radarTimestamps && radarTimestamps.length > 0) {
+            radarTimestamps.forEach((timestamp, i) => {
+                const radarLayer = new TileLayer({
+                    source: new XYZ({
+                        url: `https://tilecache.rainviewer.com/v2/radar/${timestamp}/256/{z}/{x}/{y}/5/0_0.png`,
+                        crossOrigin: 'anonymous',
+                    }),
+                    visible: i === radarTimestamps.length - 1, // Only show the latest radar layer by default
+                    opacity: 0.7,
+                });
+                baseLayers.push(radarLayer);
+            });
+        }
 
         if(geometriesList && geometriesList.length > 0) {
             const features = geometriesList.map(([geometry, alertType]) => {

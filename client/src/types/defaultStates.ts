@@ -51,5 +51,6 @@ export const defaultWeatherData: WeatherData = {
     dailyForecast: defaultDailyForecast,
     hourlyForecast: defaultHourlyForecast,
     latestObservation: defaultLatestObservation,
-    currentAlerts: []
+    currentAlerts: [],
+    radarTimestamps: [],
 }

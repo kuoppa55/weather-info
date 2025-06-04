@@ -50,6 +50,7 @@ def process_point_information(lat, lon, point, fips_map):
     hourlyForecast = data_processing.getHourlyForecast(point)
     latestObservation = data_processing.getLatestObservation(point)
     currentAlerts = data_processing.getAlerts(point, fips_map)
+    radarTimestamps = data_processing.getRadarTimestamps()
 
     response = {
         "latitude": lat,
@@ -58,6 +59,7 @@ def process_point_information(lat, lon, point, fips_map):
         "hourlyForecast": hourlyForecast,
         "latestObservation": latestObservation,
         "currentAlerts": currentAlerts,
+        "radarTimestamps": radarTimestamps,
     }
 
     return response

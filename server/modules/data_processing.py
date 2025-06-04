@@ -199,11 +199,22 @@ def getAlerts(point, fips_map):
 
     return parsedAlerts
 
-#PWO
-#CFP
-def getProducts():
-    pwoProduct = api_requests.get_product("PWO")
-    cfpProduct = api_requests.get_product("CFP")
+def getRadarTimestamps():
+    metadataUrl = 'https://api.rainviewer.com/public/weather-maps.json'
+    metadata = api_requests.get_radar_metadata(metadataUrl)
+
+    radarMetadata = metadata['radar']
+    radarPasts = radarMetadata['past']
+
+    print(metadata)
+    
+    mostRecentTimestamps = [frame['time'] for frame in radarPasts[-3:]]
+
+    print(mostRecentTimestamps)
+
+    return mostRecentTimestamps
+
+
 
 
 

@@ -5,6 +5,7 @@ export type WeatherData = {
     hourlyForecast: IHourlyForecast,
     latestObservation: LatestObservation,
     currentAlerts: IAlert[],
+    radarTimestamps: number[],
 }
 
 

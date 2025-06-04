@@ -55,3 +55,7 @@ def get_product(productId):
     response = requests.get(url).json()
 
     return response
+
+def get_radar_metadata(url):
+    response = requests.get(url).json()
+    return response
