@@ -1,10 +1,10 @@
 .weekday {
     text-align: center;
-    background-color: #d8eaf7;
+    background-color: var(--color-card-inner);
     border-radius: 12px;
     padding: 0.1em;
     margin: 0.5em;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 6px var(--color-shadow);
     flex: 1 1 100px;
     min-width: 0;
 }
@@ -19,12 +19,14 @@
 
 .weekdayLowTemp {
     font-size: 1.2em;
-    color: #3498db;
+    color: var(--color-temp-low);
+    font-family: var(--font-temp);
 }
 
 .weekdayHighTemp {
     font-size: 1.4em;
-    color: #e74c3c;
+    color: var(--color-temp-high);
+    font-family: var(--font-temp);
 }
 
 @media (max-width: 600px) {

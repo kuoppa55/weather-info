@@ -40,9 +40,11 @@ const ZipCode = (props: ZipCodeProps) => {
             onChange={(e) => setLocalZip(e.target.value)} 
             placeholder="Enter zip code..."
             maxLength={5}
+            className="zipCodeInput"
         />
         <button
-            onClick={submitZipCode} 
+            onClick={submitZipCode}
+            className="zipCodeButton"
         >
             Get Weather
         </button>

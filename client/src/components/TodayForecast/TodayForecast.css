@@ -3,6 +3,7 @@
     padding-right:0.5em;
     margin-top: 0em;
     margin-bottom:0em;
+    font-family: var(--font-temp);
 }
 
 .rainAndWindContainer {
@@ -13,7 +14,7 @@
 
 #lowTemp {
     font-size: 48px;
-    color:blue;
+    color: var(--color-temp-low);
     padding-top: 1.5em;
     padding-left: 0.2em;
     padding-right: 0.2em;
@@ -28,7 +29,7 @@
 
 #highTemp {
     font-size: 48px;
-    color: red;
+    color: var(--color-temp-high);
     padding-bottom: 1.5em;
     padding-right: 0.2em;
     padding-left: 0.2em;

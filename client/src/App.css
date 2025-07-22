@@ -1,20 +1,9 @@
-:root {
-  --primary: #3498db;
-  --secondary: #2c3e50;
-  --accent: #e74c3c;
-}
 
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f5f7fa;
-  color: var(--secondary)
-}
-
-.container {
-  max-width: 100%;
-  width: 95%;
-  margin: 0 auto;
-  padding: 1rem;
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  text-shadow: 1px 1px #ccc;
 }
 
 h1, h2, h3 {
@@ -23,14 +12,26 @@ h1, h2, h3 {
 }
 
 .card {
-  background-color: #ffffff;
+  background-color: var(--color-card);
+  border-color: var(--color-border);
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px var(--color-shadow);
   transition: transform 0.2s ease-in-out;
 }
 
 .card:hover {
   transform: translateY(-2px);
+}
+
+.container {
+  width: 100%;
+}
+
+.weatherContainer {
+  max-width: 100%;
+  width: 95%;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 .App-header {

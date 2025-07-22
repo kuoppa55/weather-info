@@ -3,14 +3,18 @@
     align-items: center;
     width: 100%; /* Ensure full width */
     flex-wrap: wrap; /* Allow wrapping */
+    border-bottom: .1em solid var(--color-border); /* Subtle border for separation */
+    background-color: var(--color-header);
 }
 .headerTitle {
+    padding-left: 1em;
     margin-right: 1em;
     font-size: 64px;
     font-weight: normal;
     margin-top: 0.1em;
     margin-bottom: 0.1em;
     min-width: 320px;
+    font-family: var(--font-header);
 }
 
 /* Add media query for mobile devices */

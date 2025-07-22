@@ -45,6 +45,7 @@
     cursor: pointer;
     font-size: 0.9rem;
     transition: background-color 0.2s, color 0.2s;
+    font-family: var(--font-body);
 }
 
 .alertDetailsButton:hover {
@@ -105,6 +106,7 @@
     border-radius: 4px;
     cursor: pointer;
     margin-top: 10px;
+    font-family: var(--font-body);
 }
 
 /* Optional hover effect for alerts */

@@ -1,0 +1,14 @@
+:root {
+  --color-bg: #f0ebde;
+  --color-header: #f8f5ef;
+  --color-card: #e8fdd8;
+  --color-card-inner: #d8fff2;
+  --color-text: #2c2c2c;
+  --color-temp-high: #e63946;
+  --color-temp-low: #457b9d;
+  --color-border: #b3b3b3;
+  --color-shadow: rgba(0, 0, 0, 0.15);
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-header: 'Orbitron', sans-serif;
+  --font-temp: 'Space Mono', monospace;
+}

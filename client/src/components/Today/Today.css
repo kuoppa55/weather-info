@@ -35,13 +35,13 @@
     align-items: center;     /* Centers text vertically */
     text-align: center;      /* Ensures text is centered */
     padding: 1rem;          /* Adds spacing for readability */
-    background-color: #fff;
+    background-color: var(--color-card) ;
     border-radius: 1rem;
 
 }
 
 .todayPanel {
-    background-color: #d8eaf7;
+    background-color: var(--color-card-inner);
     border-radius: 16px;
     padding: 1.5em;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
