@@ -25,6 +25,13 @@
     font-size: 1.2rem;
 }
 
+.todayIcon {
+    width: 3em;
+    height: 3em;
+    display: block;
+    margin: 0 auto;
+}
+
 .todayChild {
     flex: 1 1 100%;
     max-width: 360px;

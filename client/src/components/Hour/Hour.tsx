@@ -2,6 +2,8 @@ import React from 'react'
 import './Hour.css'
 import { HourlyPeriod } from '../../types/types'
 import processHourTime from '../../utils/processHourTime'
+import WeatherIcon from '../WeatherIcon/WeatherIcon'
+import getWeatherIconClass from '../../utils/getWeatherIconClass'
 
 const Hour = (props: HourlyPeriod) => {
     const {shortCast, temperature, precipProb, relativeHumidity, wind, startTime} = props
@@ -13,7 +15,7 @@ const Hour = (props: HourlyPeriod) => {
             <div className="hourForecastDetails">
                 <div className="hourForecastItem">
                     <div className="hourForecastItemValue">
-                        {shortCast}
+                        <WeatherIcon iconKey={getWeatherIconClass(shortCast)} className='hourIcon'/>
                     </div>
                 </div>
                 <div className="hourForecastItem">

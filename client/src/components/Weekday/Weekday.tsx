@@ -1,6 +1,8 @@
 import React from 'react'
 import { IWeatherDay } from '../../types/types'
 import './Weekday.css'
+import WeatherIcon from '../WeatherIcon/WeatherIcon'
+import getWeatherIconClass from '../../utils/getWeatherIconClass'
 
 const Weekday = (props: IWeatherDay) => {
     const {date, shortCast, highTemp, lowTemp, precipProb} = props
@@ -10,7 +12,7 @@ const Weekday = (props: IWeatherDay) => {
                 {date}
             </div>
             <div className="weekdayCast">
-                {shortCast}
+                <WeatherIcon iconKey={getWeatherIconClass(shortCast)} className='weekdayIcon'/>
             </div>
             <div className="weekdayHighTemp">
                 {highTemp}
