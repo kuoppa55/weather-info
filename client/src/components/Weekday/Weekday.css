@@ -1,7 +1,6 @@
 .weekday {
     text-align: center;
     background-color: var(--color-card-inner);
-    border-radius: 12px;
     padding: 0.1em;
     margin: 0.5em;
     box-shadow: 0 2px 6px var(--color-shadow);

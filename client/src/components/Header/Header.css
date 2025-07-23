@@ -3,7 +3,7 @@
     align-items: center;
     width: 100%; /* Ensure full width */
     flex-wrap: wrap; /* Allow wrapping */
-    border-bottom: .1em solid var(--color-border); /* Subtle border for separation */
+    border-bottom: 1px solid #a0a0a0; /* Subtle border for separation */
     background-color: var(--color-header);
 }
 .headerTitle {

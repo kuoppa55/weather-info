@@ -16,7 +16,7 @@ const TodayObserved = (props: ITodayObserved) => {
                     </div>}
                     {humidity &&  <div className="nowHumidity">Humidity: {humidity.toFixed(1)}%</div>}
                     {gust && <div className="nowGust">Gust: {gust.toFixed(1)} mph</div>}
-                    {visibility && <div className="nowVis">Visibility: {visibility} miles</div>}
+                    {visibility && <div className="nowVis">Visibility: {visibility.toFixed(1)} miles</div>}
                     {pressure && <div className="nowPressure">Pressure: {Math.round(pressure)} MB</div>}
                 </div>
                 <p className="metarString">{metar}</p>

@@ -10,7 +10,6 @@
     max-width: 400px;
     border: solid black 0.1em;
     margin-right: 0.5em;
-    border-radius: 1em;;
 }
 
 #todayHeader {
@@ -36,13 +35,11 @@
     text-align: center;      /* Ensures text is centered */
     padding: 1rem;          /* Adds spacing for readability */
     background-color: var(--color-card) ;
-    border-radius: 1rem;
 
 }
 
 .todayPanel {
     background-color: var(--color-card-inner);
-    border-radius: 16px;
     padding: 1.5em;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     text-align: center;
