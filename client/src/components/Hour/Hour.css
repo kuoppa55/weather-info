@@ -5,12 +5,19 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     width: 100%;               /* Added to ensure full width */
     box-sizing: border-box;    /* Added so padding doesn't add to width */
+    display:flex;
 }
 
-.hourTime {
-    font-size: 32px;
-    text-align: left;
-    margin-left: 0.5em;
+.hourSummary {
+    font-size: 26px;
+    text-align: center;
+}
+
+.summaryIcon{
+    width: 2.0em;
+    height: 2.0em;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .hourIcon {
@@ -24,10 +31,17 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     width: 100%;               /* Added to ensure full width */
+    margin-left:0.2em;
+    margin-top: 0.3em;
+}
+
+.hourForecastItem {
+    text-align: center;
+    padding-right: 0.5em;
 }
 
 @media (min-width: 600px) {
     .hourForecastDetails {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 }

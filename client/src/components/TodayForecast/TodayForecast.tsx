@@ -1,6 +1,7 @@
 import React from 'react'
 import { ITodayForecast} from '../../types/types'
 import './TodayForecast.css'
+import WeatherIcon from '../WeatherIcon/WeatherIcon'
 
 
 
@@ -21,9 +22,11 @@ const TodayForecast = (props: ITodayForecast) => {
         </div>
         <div className="rainAndWindContainer">
             <p className="todayPanel">
+                <WeatherIcon iconKey="rain-drop" className='todayIcon'/>
                 {precipProb}%
             </p>
             <p className="todayPanel">
+                <WeatherIcon iconKey="wind-measurement" className='todayIcon'/>
                 {wind.windSpeed} {wind.windDirection}
             </p>
         </div>

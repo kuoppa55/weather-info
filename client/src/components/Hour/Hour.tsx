@@ -9,26 +9,18 @@ const Hour = (props: HourlyPeriod) => {
     const {shortCast, temperature, precipProb, relativeHumidity, wind, startTime} = props
     return (
         <div className="hour">
-            <div className="hourTime">
+            <div className="hourSummary">
                 {processHourTime(startTime)}
+                <WeatherIcon iconKey={getWeatherIconClass(shortCast)} className='summaryIcon'/>
             </div>
             <div className="hourForecastDetails">
                 <div className="hourForecastItem">
-                    <div className="hourForecastItemValue">
-                        <WeatherIcon iconKey={getWeatherIconClass(shortCast)} className='hourIcon'/>
-                    </div>
+                    <WeatherIcon iconKey="thermometer" className='hourIcon'/>
+                    {temperature.value}
                 </div>
                 <div className="hourForecastItem">
                     <div className="hourForecastItemTitle">
-                        Temp
-                    </div>
-                    <div className="hourForecastItemValue">
-                        {temperature.value}
-                    </div>
-                </div>
-                <div className="hourForecastItem">
-                    <div className="hourForecastItemTitle">
-                        Rain
+                        <WeatherIcon iconKey="rain-drop" className='hourIcon'/>
                     </div>
                     <div className="hourForecastItemValue">
                         {precipProb}%
@@ -36,7 +28,7 @@ const Hour = (props: HourlyPeriod) => {
                 </div>
                 <div className="hourForecastItem">
                     <div className="hourForecastItemTitle">
-                        Humidity
+                        <WeatherIcon iconKey="humidity" className='hourIcon'/>
                     </div>
                     <div className="hourForecastItemValue">
                         {relativeHumidity}%
@@ -44,7 +36,7 @@ const Hour = (props: HourlyPeriod) => {
                 </div>
                 <div className="hourForecastItem">
                     <div className="hourForecastItemTitle">
-                        Wind
+                        <WeatherIcon iconKey="wind-measurement" className='hourIcon'/>
                     </div>
                     <div className="hourForecastItemValue">
                         {wind.windSpeed} {wind.windDirection}

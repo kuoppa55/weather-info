@@ -40,7 +40,7 @@
     justify-content: center; /* Centers text inside each child div */
     align-items: center;     /* Centers text vertically */
     text-align: center;      /* Ensures text is centered */
-    padding: 1rem;          /* Adds spacing for readability */
+    padding: 0.5rem;          /* Adds spacing for readability */
     background-color: var(--color-card) ;
 
 }

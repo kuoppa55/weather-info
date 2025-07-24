@@ -13,6 +13,10 @@ import {ReactComponent as StrongWind} from "../../assets/icons/weather/wi-strong
 import {ReactComponent as DaySunnyOvercast} from "../../assets/icons/weather/wi-day-sunny-overcast.svg";
 import {ReactComponent as DayCloudy} from "../../assets/icons/weather/wi-day-cloudy.svg";
 import {ReactComponent as Cloudy} from "../../assets/icons/weather/wi-cloudy.svg";
+import {ReactComponent as RainDrop} from "../../assets/icons/weather/wi-raindrop.svg";
+import {ReactComponent as Thermometer} from "../../assets/icons/weather/wi-thermometer.svg";
+import {ReactComponent as Humidity} from "../../assets/icons/weather/wi-humidity.svg";
+import {ReactComponent as Pressure} from "../../assets/icons/weather/wi-barometer.svg";
 const iconMap: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>>> = {
     "thunderstorm": DayThunderstorm,
     "tornado": Tornado,
@@ -28,6 +32,11 @@ const iconMap: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGEleme
     "day-cloudy": DayCloudy,
     "cloudy": Cloudy,
     "day-sunny": DaySunny,
+    "rain-drop": RainDrop,
+    "wind-measurement": StrongWind,
+    "thermometer": Thermometer,
+    "humidity": Humidity,
+    "pressure": Pressure,
 };
 
 type WeatherIconProps = {
