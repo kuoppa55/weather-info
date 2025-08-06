@@ -12,7 +12,7 @@ const Weekday = (props: IWeatherDay) => {
                 {date}
             </div>
             <div className="weekdayCast">
-                <WeatherIcon iconKey={getWeatherIconClass(shortCast)} className='weekdayIcon'/>
+                <WeatherIcon iconKey={getWeatherIconClass(shortCast, true)} className='weekdayIcon'/>
             </div>
             <div className="weekdayHighTemp">
                 {highTemp}

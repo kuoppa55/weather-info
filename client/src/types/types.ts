@@ -44,6 +44,7 @@ export type HourlyPeriod = {
     wind: Wind,
     startTime: string,
     endTime: string,
+    isDaytime: boolean,
 }
 
 export type LatestObservation = {
@@ -114,11 +115,12 @@ export type Wind = {
 }
 
 export type IWeatherToday = {
-    timeOfDay: string,
+    name: string,
     shortCast: string,
     todayForecast: ITodayForecast,
     todayObserved: ITodayObserved,
-    todayHourly: IHourlyForecast,   
+    todayHourly: IHourlyForecast,
+    timeOfDay: TimeOfDay,
 }
 
 export type ITodayForecast = {
@@ -144,7 +146,7 @@ export type IWeatherDay = {
     date: string,
     shortCast: string,
     highTemp: number,
-    lowTemp: number,
+    lowTemp: number | null,
     precipProb: number,
 }
 

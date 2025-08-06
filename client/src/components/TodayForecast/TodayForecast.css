@@ -41,3 +41,11 @@
     display: block;
     margin: 0 auto;
 }
+
+.rainAndWindIcon {
+    width: 2.5em;
+    height: 2.5em;
+    display: block;
+    margin: 0;
+    padding-right: 0.5em;
+}

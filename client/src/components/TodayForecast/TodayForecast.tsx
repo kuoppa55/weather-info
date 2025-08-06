@@ -22,11 +22,11 @@ const TodayForecast = (props: ITodayForecast) => {
         </div>
         <div className="rainAndWindContainer">
             <p className="todayPanel">
-                <WeatherIcon iconKey="rain-drop" className='todayIcon'/>
+                <WeatherIcon iconKey="rain-drop" className='rainAndWindIcon'/>
                 {precipProb}%
             </p>
             <p className="todayPanel">
-                <WeatherIcon iconKey="wind-measurement" className='todayIcon'/>
+                <WeatherIcon iconKey="wind-measurement" className='rainAndWindIcon'/>
                 {wind.windSpeed} {wind.windDirection}
             </p>
         </div>

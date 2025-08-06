@@ -17,8 +17,8 @@ const TodayObserved = (props: ITodayObserved) => {
                         {wind.windSpeed.toFixed(1)} mph from {wind.windDirection}
                     </div>}
                     {humidity &&  <div className="nowHumidity"><WeatherIcon iconKey="humidity" className='nowIcon'/> {humidity.toFixed(1)}%</div>}
-                    {gust && <div className="nowGust"><WeatherIcon iconKey="wind-measurement" className='nowIcon'/> {gust.toFixed(1)} mph</div>}
-                    {visibility && <div className="nowVis"><WeatherIcon iconKey="wind-measurement" className='nowIcon'/> {visibility.toFixed(1)} miles</div>}
+                    {gust && <div className="nowGust"><WeatherIcon iconKey="wind-gust" className='nowIcon'/> {gust.toFixed(1)} mph</div>}
+                    {visibility && <div className="nowVis"><WeatherIcon iconKey="visibility" className='nowIcon'/> {visibility.toFixed(1)} miles</div>}
                     {pressure && <div className="nowPressure"><WeatherIcon iconKey="pressure" className='nowIcon'/> {Math.round(pressure)} MB</div>}
                 </div>
         </div>

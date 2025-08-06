@@ -6,12 +6,12 @@ import WeatherIcon from '../WeatherIcon/WeatherIcon'
 import getWeatherIconClass from '../../utils/getWeatherIconClass'
 
 const Hour = (props: HourlyPeriod) => {
-    const {shortCast, temperature, precipProb, relativeHumidity, wind, startTime} = props
+    const {shortCast, temperature, precipProb, relativeHumidity, wind, startTime, isDaytime} = props
     return (
         <div className="hour">
             <div className="hourSummary">
                 {processHourTime(startTime)}
-                <WeatherIcon iconKey={getWeatherIconClass(shortCast)} className='summaryIcon'/>
+                <WeatherIcon iconKey={getWeatherIconClass(shortCast, isDaytime)} className='summaryIcon'/>
             </div>
             <div className="hourForecastDetails">
                 <div className="hourForecastItem">

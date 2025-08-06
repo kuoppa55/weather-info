@@ -36,7 +36,7 @@ def parse_hourly_period(period):
         "startTime": (period['startTime']),
         "endTime": (period['endTime']),
         "shortCast": period['shortForecast'],
-
+        "isDaytime": period['isDaytime'],
     }
 
     temperature = {

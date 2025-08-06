@@ -47,7 +47,7 @@ const processWeatherToday = (weatherData: WeatherData, timeOfDay: TimeOfDay): IW
 
 
     return {
-        timeOfDay: currentPeriod.name,
+        name: currentPeriod.name,
         shortCast: currentPeriod.shortCast,
         todayForecast: {
             lowTemp: temps[0],
@@ -67,6 +67,7 @@ const processWeatherToday = (weatherData: WeatherData, timeOfDay: TimeOfDay): IW
             metar: currentObservation.metar,
         },
         todayHourly: weatherData.hourlyForecast,
+        timeOfDay: timeOfDay,
     }
 }
 

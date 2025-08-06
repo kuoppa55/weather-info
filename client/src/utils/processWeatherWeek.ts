@@ -19,7 +19,7 @@ const processWeatherWeek = (weatherData: WeatherData, timeOfDay: TimeOfDay): IWe
             date: dailyPeriods[i].name,
             shortCast: dailyPeriods[i].shortCast,
             highTemp: dailyPeriods[i].temperature.value,
-            lowTemp: dailyPeriods[i+1] ? dailyPeriods[i+1].temperature.value : 0,
+            lowTemp: dailyPeriods[i+1] ? dailyPeriods[i+1].temperature.value : null,
             precipProb: dailyPeriods[i].precipProb,
         })
     }
