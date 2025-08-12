@@ -77,8 +77,6 @@ const WeatherMap = (props: WeatherMapProps) => {
                     console.warn(`Unsupported geometry type`)
                     return null
                 }
-
-                console.log(olGeometry)
                 
                 const feature = new Feature({geometry: olGeometry})
 

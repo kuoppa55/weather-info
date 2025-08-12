@@ -24,9 +24,7 @@ const processWeatherToday = (weatherData: WeatherData, timeOfDay: TimeOfDay): IW
 
     function getCurrentTemperature(observation: Observation, hourlyPeriods: HourlyPeriod[]): number {
         const obsTime = new Date(observation.timestamp)
-        console.log("OBS TIME: " + obsTime)
         const now = new Date()
-        console.log("NOW: " + now)
 
         const diffMs = now.getTime() - obsTime.getTime()
         const diffMinutes = diffMs / (1000 * 60)

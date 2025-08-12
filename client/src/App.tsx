@@ -19,7 +19,6 @@ function App() {
     try {
       const response = zip === "" ? await axios.get(`/weather/location/${lat}/${lon}`) : await axios.get(`/weather/zip/${zip}`)
       setWeatherData(response.data)
-      console.log(response.data)
     } catch (err) {
       setError("Error fetching weather data")
     } finally {
