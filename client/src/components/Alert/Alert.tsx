@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import './Alert.css'
 import { IAlert } from '../../types/types'
-import processHourTime from '../../utils/processHourTime'
 import { ALERT_COLORS } from '../../types/alertColors'
+import processAlertTimes from '../../utils/processAlertTimes'
 
 interface AlertProps {
     alert: IAlert
@@ -23,10 +23,10 @@ const Alert = (props: AlertProps) => {
                 </div>
                 <div className='alertTimes'>
                     <div className='alertEffectiveTime'>
-                        Effective: {processHourTime(alert.effective)}
+                        Effective: {processAlertTimes(alert.effective)}
                     </div>
                     <div className='alertExpiresTime'>
-                        Expires: {processHourTime(alert.expires)}
+                        Expires: {processAlertTimes(alert.expires)}
                     </div>
                 </div>
                 <button 
@@ -43,8 +43,8 @@ const Alert = (props: AlertProps) => {
                          style={{'--modal-color': hex} as React.CSSProperties}>
                         <h3>{alert.event}</h3>
                         <div className="modal-times">
-                            <div>Effective: {processHourTime(alert.effective)}</div>
-                            <div>Expires: {processHourTime(alert.expires)}</div>
+                            <div>Effective: {processAlertTimes(alert.effective)}</div>
+                            <div>Expires: {processAlertTimes(alert.expires)}</div>
                         </div>
                         <div className="modal-description">{alert.description}</div>
                         <button className="modal-close" onClick={() => setShowModal(false)}>
