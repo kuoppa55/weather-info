@@ -26,6 +26,16 @@ function App() {
     }
   }
 
+  const handleTitleClick = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          fetchWeather("", position.coords.latitude, position.coords.longitude)
+        }
+      )
+    }
+  }
+
   const zipCodeProps = {
     zipCode: zipCode,
     setZipCode: setZipCode,
@@ -38,7 +48,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="container">
-          <Header zipCodeProps={zipCodeProps}/>
+          <Header zipCodeProps={zipCodeProps} onClick={handleTitleClick}/>
           {loading && <p>Loading...</p>}
           {error && <p>{error}</p>}
           <div className="weatherContainer">
