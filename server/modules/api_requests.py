@@ -46,7 +46,6 @@ def get_hourly_forecast(nwsOffice, gridX, gridY):
 def get_alerts(zoneId):
     url = f'https://api.weather.gov/alerts/active/zone/{zoneId}'
     response = requests.get(url).json()
-    print(zoneId)
 
     return response
 

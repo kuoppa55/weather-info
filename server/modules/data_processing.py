@@ -205,12 +205,8 @@ def getRadarTimestamps():
 
     radarMetadata = metadata['radar']
     radarPasts = radarMetadata['past']
-
-    print(metadata)
     
     mostRecentTimestamps = [frame['time'] for frame in radarPasts[-3:]]
-
-    print(mostRecentTimestamps)
 
     return mostRecentTimestamps
 
