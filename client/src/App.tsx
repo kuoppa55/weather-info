@@ -32,6 +32,8 @@ function App() {
     fetchWeather: fetchWeather,
   }
 
+  document.title = "Simply Weather";
+
   return (
     <div className="App">
       <header className="App-header">

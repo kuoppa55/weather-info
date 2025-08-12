@@ -1,6 +1,7 @@
 .alert {
-    margin-right: 1em;
-    padding: 1.2em;
+    margin: 0; /* spacing handled by parent .alerts gap */
+    /* reduce vertical padding for a shorter card */
+    padding: 0.6em 1em;
     border: 2px solid var(--alert-color, #ccc);
     background-color: var(--alert-bg, #f9f9f9);
     color: var(--alert-text, #000);
@@ -8,6 +9,16 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     position: relative;
     overflow: hidden;
+
+    /* lay out content horizontally to reduce height */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    flex-wrap: wrap; /* wrap on small screens */
+
+    /* avoid full-width: allow multiple per row */
+    flex: 1 1 2rem;; /* base width ~360px */
+    max-width: 18rem; /* prevent stretching too wide */
 }
 
 .alert:before {
@@ -21,21 +32,34 @@
 }
 
 .alertEvent {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 8px;
+    /* remove bottom margin to save vertical space */
+    margin: 0;
     color: var(--alert-color, #333);
     text-shadow: 0 0.3px 0.3px rgba(0, 0, 0, 0.8);
+    flex: 1 1 100%;
+}
+
+.alertTimes {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;         /* wrap if narrow */
+    align-items: baseline;
+    flex: 1 1 100%;          /* force its own row */
+    margin: 0;
 }
 
 .alertEffectiveTime, .alertExpiresTime {
     font-size: 0.9rem;
-    margin: 4px 0;
+    /* remove vertical margins so they sit inline nicely */
+    margin: 0;
     color: #555;
 }
 
 .alertDetailsButton {
-    margin-top: 12px;
+    /* remove top margin so it aligns inline */
+    margin: 0.35rem 0 0 0;
     background-color: transparent;
     color: var(--alert-color, #333);
     border: 2px outset #fff;

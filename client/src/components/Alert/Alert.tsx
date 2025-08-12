@@ -21,11 +21,13 @@ const Alert = (props: AlertProps) => {
                 <div className='alertEvent'>
                     {alert.event}
                 </div>
-                <div className='alertEffectiveTime'>
-                    Effective: {processHourTime(alert.effective)}
-                </div>
-                <div className='alertExpiresTime'>
-                    Expires: {processHourTime(alert.expires)}
+                <div className='alertTimes'>
+                    <div className='alertEffectiveTime'>
+                        Effective: {processHourTime(alert.effective)}
+                    </div>
+                    <div className='alertExpiresTime'>
+                        Expires: {processHourTime(alert.expires)}
+                    </div>
                 </div>
                 <button 
                     className='alertDetailsButton'

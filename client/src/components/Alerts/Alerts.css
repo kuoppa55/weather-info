@@ -1,4 +1,7 @@
 .alerts {
     display: flex;
     margin-top: 1em;
+    /* allow multiple alert cards per row and consistent spacing */
+    flex-wrap: wrap;
+    gap: 1rem;
 }

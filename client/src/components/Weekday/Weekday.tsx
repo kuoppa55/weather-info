@@ -21,7 +21,8 @@ const Weekday = (props: IWeatherDay) => {
                 {lowTemp}
             </div>
             <div className="weekdayPrecipProb">
-                {precipProb}% rain
+                <WeatherIcon iconKey="rain-drop" className='rainIcon'/>
+                {precipProb}%
             </div>
         </div>
     )

@@ -31,6 +31,14 @@
     font-family: var(--font-temp);
 }
 
+.weekdayPrecipProb {
+    font-size: 1.2em;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (max-width: 600px) {
     .weekday {
         flex: none;
@@ -38,4 +46,12 @@
         max-width: none;
         text-align: center;
     }
+}
+
+.rainIcon {
+    width: 2em;
+    height: 2em;
+    display: block;
+    margin: 0;
+    padding-right: 0.1em;
 }
