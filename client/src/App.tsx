@@ -5,6 +5,7 @@ import { defaultWeatherData } from './types/defaultStates';
 import Weather from './components/Weather/Weather';
 import Header from './components/Header/Header';
 import './App.css'
+import Loading from './components/Loading/Loading';
 
 function App() {
   const [weatherData, setWeatherData] = useState<WeatherData>(defaultWeatherData)
@@ -49,7 +50,7 @@ function App() {
       <header className="App-header">
         <div className="container">
           <Header zipCodeProps={zipCodeProps} onClick={handleTitleClick}/>
-          {loading && <p>Loading...</p>}
+          {loading && <Loading />}
           {error && <p>{error}</p>}
           <div className="weatherContainer">
             {(weatherData.dailyForecast.dailyPeriods[0] && !loading && !error) && <Weather {...weatherData} />}
