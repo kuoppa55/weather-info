@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import axios from 'axios'
+import {api} from "./api"
 import { WeatherData } from './types/types';
 import { defaultWeatherData } from './types/defaultStates';
 import Weather from './components/Weather/Weather';
@@ -17,7 +17,7 @@ function App() {
     setLoading(true)
     setError(null)
     try {
-      const response = zip === "" ? await axios.get(`/weather/location/${lat}/${lon}`) : await axios.get(`/weather/zip/${zip}`)
+      const response = zip === "" ? await api.get(`/weather/location/${lat}/${lon}`) : await api.get(`/weather/zip/${zip}`)
       setWeatherData(response.data)
     } catch (err) {
       setError("Error fetching weather data")

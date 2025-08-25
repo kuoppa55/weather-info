@@ -82,6 +82,10 @@ async def get_weather_information_from_zip(zipcode: str, request: Request):
 
     return process_point_information(lat_lon[0], lat_lon[1], point, request.app.state.county_geometries_by_fips)
 
+@app.get("/health")
+def health():
+    return {"ok": True}
+
 
 
 
