@@ -43,7 +43,7 @@ app = FastAPI(lifespan=lifespan)
 origins = [
     'http://localhost:3000',
     'https://kuoppa55.github.io',
-    'https://kuoppa55/github.io/weather-info'
+    'https://kuoppa55.github.io/weather-info'
 ]
 
 app.add_middleware(
