@@ -10,9 +10,17 @@ from pathlib import Path
 
 DATA_PATH = Path(__file__).parent / "counties.geojson"
 
+def read_text_with_fallback(p: Path) -> str:
+    for enc in ("utf-8", "utf-8-sig", "latin-1", "cp1252"):
+        try:
+            return p.read_text(encoding=enc)
+        except UnicodeDecodeError:
+            continue
+    raise RuntimeError("Cannot decode counties.geojson")
+
 def load_county_geometries(file_path: Path):
-    with open(file_path, 'r') as f:
-        data = json.load(f)
+    text = read_text_with_fallback(file_path)
+    data = json.loads(text)
 
     fips_map = {}
     for feature in data['features']:
