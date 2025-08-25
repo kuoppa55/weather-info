@@ -1,0 +1,6 @@
+node_modules/
+client/node_modules/
+__pycache__/
+server/modules/__pycache__/
+client/.env
+.vscode/settings.json
