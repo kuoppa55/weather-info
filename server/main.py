@@ -6,8 +6,11 @@ from fastapi import FastAPI
 from fastapi import Request
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
+from pathlib import Path
 
-def load_county_geometries(file_path):
+DATA_PATH = Path(__file__).parent / "counties.geojson"
+
+def load_county_geometries(file_path: Path):
     with open(file_path, 'r') as f:
         data = json.load(f)
 
@@ -22,7 +25,7 @@ def load_county_geometries(file_path):
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    fips_map = load_county_geometries('./counties.geojson')
+    fips_map = load_county_geometries(DATA_PATH)
     app.state.county_geometries_by_fips = fips_map
     print(f"Loaded {len(fips_map)} county geometries.")
     yield
@@ -31,6 +34,8 @@ app = FastAPI(lifespan=lifespan)
 
 origins = [
     'http://localhost:3000',
+    'https://kuoppa55.github.io',
+    'https://kuoppa55/github.io/weather-info'
 ]
 
 app.add_middleware(
